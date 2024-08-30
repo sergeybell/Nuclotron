@@ -1,0 +1,154 @@
+#NICA Accelerator Complex
+#NUCLOTRON RING
+#Ring with eight octant arcs. 
+#Each arc has 12 magnets, Field=1.4895 Tesla 
+
+#-------MAIN parameters------------------------------------
+#proton mass in  [kG] m_p---------------------------------
+	$m_p=1.6726e-27;  =>  1.6726e-27
+#el  charge in [C]-----------------------------------------
+	$Qp=1.6022e-19;  =>  1.6022e-19
+#speed of ligt in [m/sec]-----------------------------------
+	$c_light=$c*0.01;  =>   299792458
+#Unified atomic mass unit [MeM/u]--------------------------
+	$NMASS=931.494061;  =>  931.494061
+#Kinetic energy [MeV/u]-------------------------------------
+	$W=270.;  =>         270
+#Charge and mass-------------------------------------------
+	$Z=1.;  =>           1
+	$A=2.;  =>           2
+#GAMMA------------------------------------------------------
+	$GAMMA=($NMASS+$W)/$NMASS;  =>  1.28985692
+	$BETA=sqrt(1.-1./$GAMMA^2);  => 0.981998871
+#ENERGY & MASS----------------------------------------------
+	$Energy=$W*$A/$Z ;  =>         540
+	$Mass=$NMASS*$A/$Z;  =>  1862.98812
+#Beam particle momentum [MeV/u]-----------------------------
+	$P0=$NMASS*$BETA*$GAMMA;  =>   758.88523
+#Magnetic rigidity [kGs*cm]---------------------------------
+	$BRHO=$A/$Z*$P0/$c*1.e+11;  =>   5062.7373
+#Rigidity of ring in [T*m]----------------------------------
+	$BR=$BRHO/1000;  =>   5.0627373
+#Magnetic field in magnet in [Tesla]------------------------
+	$B=1.8;  =>         1.8
+	$R=$BR/$B*100;  =>  281.263184
+#Full length of all magnets 2pi*R in [cm]------------------
+	$L_mags=2*$pi*$R;  =>  13628.1893
+#
+#=========ONE ARC STRUCTURE============================
+#
+#FROM MADX-file: nuclotron_fodo.madx
+#ss:	line:=(qf, dr1, qd, dr1);
+#cell:	line:=(qf, dr2, bm, dr3, bm, dr4, qd, dr2, bm, dr3, bm, dr4);
+#octant:	line:=(ss, 3*(cell));
+#nuclotron:	line:=(8*(octant));
+# 
+# arc=4 cells
+# 
+# number of magnets per arc
+$n_mag=12;  =>          12
+# number of arc
+$n_arc=8;  =>           8
+# number of magnet on two arcs
+$N_mag=$n_mag*$n_arc        ;  =>          96
+#Lengt of one magnet in [cm]
+$L_mag=$L_mags/$N_mag;  =>  141.960305
+# angle of bending per one magnet in [deg]------------
+$ang_B=$L_mag/($L_mags)*360;  =>        3.75
+# total angle of bending in the ring in [deg]---------
+$ang_ring=$ang_B*$N_mag;  =>         360
+#=====================================================
+
+
+#*******************************************************************************************
+OptiM
+Energy[MeV]=$W*$A/$Z  Mass[MeV]=$NMASS*$A/$Z
+Emittance: ex[cm]=0.002  ey[cm]=0.002  DP/P=0.001 
+Initial:	BetaX[cm]=1338.79 	BetaY[cm]=123.396 
+	AlfaX=-3.53748 	AlfaY=0.506711 
+	DispersX[cm]=-0.0015858 	DispersY[cm]=-0 
+	Dsp_PrimeX=4.48705e-06 	DspPrimeY=0 
+	Dsp_PrimeX=0.0 	DspPrimeY=0 
+	tetaX[deg]=0        	tetaY[deg]=0        
+begin lattice. Number of periods=1 
+
+#====================================ARC===========================================================
+QF QF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD MCSD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+#===============================Straight Section===================================================
+QF QF O1 QD1 QD1 O1 QF1 QF1 O1 QD1 QD1 O1
+#====================================ARC===========================================================
+QF QF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD MCSD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+#===============================Straight Section===================================================
+QF QF O1 QD1 QD1 O1 QF1 QF1 O1 QD1 QD1 O1
+#====================================ARC===========================================================
+QF QF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD MCSD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+#===============================Straight Section===================================================
+QF QF O1 QD1 QD1 O1 QF1 QF1 O1 QD1 QD1 O1
+#====================================ARC===========================================================
+QF QF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD MCSD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+#===============================Straight Section===================================================
+QF QF O1 QD1 QD1 O1 QF1 QF1 O1 QD1 QD1 O1
+#====================================ARC===========================================================
+QF QF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD MCSD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+#===============================Straight Section===================================================
+QF QF O1 QD1 QD1 O1 QF1 QF1 O1 QD1 QD1 O1
+#====================================ARC===========================================================
+QF QF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD MCSD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+#===============================Straight Section===================================================
+QF QF O1 QD1 QD1 O1 QF1 QF1 O1 QD1 QD1 O1
+#====================================ARC===========================================================
+QF QF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD MCSD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+#===============================Straight Section===================================================
+QF QF O1 QD1 QD1 O1 QF1 QF1 O1 QD1 QD1 O1
+#====================================ARC===========================================================
+QF QF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD MCSD O2 BM O3 BM O4
+QF QF MCSF O2 BM O3 BM O4 QD QD O2 BM O3 BM O4
+#===============================Straight Section===================================================
+QF QF O1 QD1 QD1 O1 QF1 QF1 O1 QD1 QD1 O1
+#==================================================================================================
+end lattice
+begin list
+#=======================================================================================
+#---------------------------BENDING MAGNETS---------------------------------
+BM 	L[cm]=117.472        	B[kG]=18*281.263184/1794.84228         	G[kG/cm]=0        	Tilt[deg]=0
+OBM 	L[cm]=141.961
+
+#-----------------------------DRIFTS---------------------------------
+O1 	L[cm]=225      
+O2 	L[cm]=13.0656 
+O3 	L[cm]=9.03928 
+O4 	L[cm]=43.0656    
+  
+#---------------------------QUADRUPOLES-------------------------------
+QF 	L[cm]=21.954     	G[kG/cm]=3.824*281.263184/1794.84228   	Tilt[deg]=0
+QD 	L[cm]=21.954     	G[kG/cm]=-3.755*281.263184/1794.84228 	Tilt[deg]=0
+
+QF1 	L[cm]=21.954     	G[kG/cm]=3.4775*281.263184/1794.84228  	Tilt[deg]=0
+QD1 	L[cm]=21.954     	G[kG/cm]=-3.905*281.263184/1794.84228  	Tilt[deg]=0
+
+#----------------------------SEXTUPOLES---------------------------------
+SF 	L[cm]=30         	S[kG/cm/cm)]=0   Tilt[deg]=0
+SD 	L[cm]=30         	S[kG/cm/cm)]=0   Tilt[deg]=0
+#----------------------------WIEN FILTER---------------------------------
+MCSF	Order:	m=2	Bm*L[kG/cm^(m-1)]=0.44	Tilt[deg]=0.
+MCSD	Order:	m=2	Bm*L[kG/cm^(m-1)]=-1.8	Tilt[deg]=0.
+
+RA	L[cm]=0.0   	B[kG]=0.0    	Gb[kG/cm]=0  	E[kV/cm]=0.0    	Ge[kV/cm^2]=0
+
+#=======================================================================================
+end list of elements

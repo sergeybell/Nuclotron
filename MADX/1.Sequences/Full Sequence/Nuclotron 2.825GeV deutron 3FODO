@@ -1,0 +1,58 @@
+!TITLE Converted from LATTICE EDITOR: 8-periods_2.8_GeV_deuton.opt[*].  Fri Aug 16 20:13:23 2024
+
+!  Kinetic energy=5745 MeV, mass=1862.99 MeV
+!  BetaX=1.28268 m,  AlphaX=0.588816,  BetaY=4.46223 m,  AlphaY=-1.49268 
+!  DispX=-0.000267165 m,  DispPX=-0.000347862,  DispY=0 m,  DispPY=0 
+
+OPTION, -ECHO;
+ASSIGN, ECHO="line.echo";
+
+BM: SBEND,  L=1.78931916,  ANGLE=0.1308996937;
+O1: DRIFT, L=3.35 ;
+O3: DRIFT, L=0.09 ;
+O4: DRIFT, L=0.43 ;
+O5: DRIFT, L=0.13 ;
+QF: QUADRUPOLE,  L=0.2,  K1=1.665115167;
+QD: QUADRUPOLE,  L=0.2,  K1=-1.682388146;
+QF1: QUADRUPOLE,  L=0.2,  K1=1.226991137;
+QD1: QUADRUPOLE,  L=0.2,  K1=-1.154647837;
+SF1: SEXTUPOLE, L=0.3, K2=0;
+SF2: SEXTUPOLE, L=0.3, K2=0;
+SD: SEXTUPOLE, L=0.3, K2=0;
+
+MACHINE: LINE=(QD, QD, O3, BM, O5, SF2, QF, QF, O3, BM, O5, SD, QD, QD,  
+O3, BM, O5, SF1, QF, QF, O3, BM, O5, SD, QD, QD, O3, BM, O5, SF2, QF, QF,  
+O3, BM, O4, QD, QD, O1, QF1, QF1, O1, QD1, QD1, O1, QF1, QF1, O1, QD, QD,  
+O3, BM, O5, SF2, QF, QF, O3, BM, O5, SD, QD, QD, O3, BM, O5, SF1, QF, QF,  
+O3, BM, O5, SD, QD, QD, O3, BM, O5, SF2, QF, QF, O3, BM, O4, QD, QD, O1,  
+QF1, QF1, O1, QD1, QD1, O1, QF1, QF1, O1, QD, QD, O3, BM, O5, SF2, QF, QF,  
+O3, BM, O5, SD, QD, QD, O3, BM, O5, SF1, QF, QF, O3, BM, O5, SD, QD, QD,  
+O3, BM, O5, SF2, QF, QF, O3, BM, O4, QD, QD, O1, QF1, QF1, O1, QD1, QD1,  
+O1, QF1, QF1, O1, QD, QD, O3, BM, O5, SF2, QF, QF, O3, BM, O5, SD, QD, QD,  
+O3, BM, O5, SF1, QF, QF, O3, BM, O5, SD, QD, QD, O3, BM, O5, SF2, QF, QF,  
+O3, BM, O4, QD, QD, O1, QF1, QF1, O1, QD1, QD1, O1, QF1, QF1, O1, QD, QD,  
+O3, BM, O5, SF2, QF, QF, O3, BM, O5, SD, QD, QD, O3, BM, O5, SF1, QF, QF,  
+O3, BM, O5, SD, QD, QD, O3, BM, O5, SF2, QF, QF, O3, BM, O4, QD, QD, O1,  
+QF1, QF1, O1, QD1, QD1, O1, QF1, QF1, O1, QD, QD, O3, BM, O5, SF2, QF, QF,  
+O3, BM, O5, SD, QD, QD, O3, BM, O5, SF1, QF, QF, O3, BM, O5, SD, QD, QD,  
+O3, BM, O5, SF2, QF, QF, O3, BM, O4, QD, QD, O1, QF1, QF1, O1, QD1, QD1,  
+O1, QF1, QF1, O1, QD, QD, O3, BM, O5, SF2, QF, QF, O3, BM, O5, SD, QD, QD,  
+O3, BM, O5, SF1, QF, QF, O3, BM, O5, SD, QD, QD, O3, BM, O5, SF2, QF, QF,  
+O3, BM, O4, QD, QD, O1, QF1, QF1, O1, QD1, QD1, O1, QF1, QF1, O1, QD, QD,  
+O3, BM, O5, SF2, QF, QF, O3, BM, O5, SD, QD, QD, O3, BM, O5, SF1, QF, QF,  
+O3, BM, O5, SD, QD, QD, O3, BM, O5, SF2, QF, QF, O3, BM, O4, QD, QD, O1,  
+QF1, QF1, O1, QD1, QD1, O1, QF1, QF1, O1);
+
+beam, MASS=1.862988122,CHARGE=1, ENERGY=7.607988122,
+      EX=2e-05, EY=2e-05, SIGE=0.001;
+
+use,period=machine;
+
+twiss energy=7.607988122, betx=1.28268, alfx=0.588816, 
+     bety=4.46223, alfy=-1.49268, 
+     dx=-0.000267165, dpx=-0.000347862, 
+     dy=0, dpy=0;
+
+survey,;
+
+stop;

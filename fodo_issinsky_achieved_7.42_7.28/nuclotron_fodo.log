@@ -1,0 +1,244 @@
+START MATCHING
+
+number of sequences: 1
+sequence name: nuclotron
+number of variables:    2
+user given constraints: 2
+total constraints:      2
+
+START LMDIF:
+
+
+MATCH SUMMARY
+
+Node_Name                  Constraint   Type  Target Value       Final Value        Penalty
+--------------------------------------------------------------------------------------------------
+
+
+Final Penalty Function =  2.31393844e-013
+
+
+
+
+
+Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+--------------------------------------------------------------------------------
+k1qf                     7.88904e-001 1.13917e+000 -1.13917e+000 1.13917e+000
+k1qd                     7.89945e-001 1.13917e+000 -1.13917e+000 1.13917e+000
+
+END MATCH SUMMARY
+
+VARIABLE "TAR" SET TO  2.31393844e-013
+enter Twiss module
+
+++++++ table: summ
+
+            length             orbit5               alfa            gammatr 
+            251.52                 -0     0.001867858497        23.13811705 
+
+                q1                dq1            betxmax              dxmax 
+       7.420000038        -8.76527609        12.54046199        4.136061387 
+
+             dxrms             xcomax             xcorms                 q2 
+       2.022025377                  0                  0        7.280000029 
+
+               dq2            betymax              dymax              dyrms 
+      -8.900574417         12.5307922                  0                  0 
+
+            ycomax             ycorms             deltap            synch_1 
+                 0                  0                  0       0.4698037693 
+
+           synch_2            synch_3            synch_4            synch_5 
+      0.2896812037      0.01335551884    0.0009986134079      0.01610718908 
+
+            nflips 
+                 0 
+//
+Beam particle charge                      | 1
+Beam particle mass, u                     | 2
+Beam charge mass ratio                    | 0.5
+Beam mass charge ratio                    | 2
+Beam kinetic energy, GeV/u                | 4
+Magnetic rigidity, T*m                    | 32.3072
+//
+Dipole magnetic field, T                  | 1.4895
+Dipole current, A                         | 5926.51
+Dipole length, m                          | 1.41961
+Dipole half gap, m                        | 0.0275
+Bend radius, m                            | 21.69
+//
+Magnetic field at the lens pole, T        | 1.10804
+Inner radius, m                           | 0.0434741
+Quadrupole length, m                      | 0.43908
+F-quadrupole gradient, T/m                | 25.4872
+D-quadrupole gradient, T/m                | -25.5209
+//
+Circumference, m                          | 251.52
+Dipole length, m                          | 1.41961
+Quadrupole length, m                      | 0.43908
+Lense to lense distance, m                | 3.49092
+Lense to dipole distance, m               | 0.130656
+Dipole to dipole distance, m              | 0.0903928
+Empty space distance, m                   | 0.430656
+//
+Critical energy, GeV/u                    | 21.553
+gammatr                                   | 23.1381
+Q1                                        | 7.42
+Q2                                        | 7.28
+dQ1                                       | -8.76528
+dQ2                                       | -8.90057
+betxmax, m                                | 12.5405
+betymax, m                                | 12.5308
+dxmax, m                                  | 4.13606
+dymax, m                                  | 0
+Horizontal acceptance (rough), pi.mm.mrad | 311.492
+Vertical acceptance (rough), pi.mm.mrad   | 84.2924
+Horizontal acceptance, pi.mm.mrad         | 133.757
+Vertical acceptance, pi.mm.mrad           | 60.3513
+//
+enter Twiss module
+
+++++++ table: summ
+
+            length             orbit5               alfa            gammatr 
+             31.44                 -0     0.001867858497        23.13811705 
+
+                q1                dq1            betxmax              dxmax 
+      0.9275000048       -1.115746324        12.54046199        4.136061387 
+
+             dxrms             xcomax             xcorms                 q2 
+       2.143120238                  0                  0       0.9100000037 
+
+               dq2            betymax              dymax              dyrms 
+      -1.132196177         12.5307922                  0                  0 
+
+            ycomax             ycorms             deltap            synch_1 
+                 0                  0                  0                  0 
+
+           synch_2            synch_3            synch_4            synch_5 
+                 0                  0                  0                  0 
+
+            nflips 
+                 0 
+START MATCHING
+
+number of sequences: 1
+sequence name: nuclotronss
+number of variables:    2
+user given constraints: 2
+total constraints:      2
+
+START LMDIF:
+
+
+MATCH SUMMARY
+
+Node_Name                  Constraint   Type  Target Value       Final Value        Penalty
+--------------------------------------------------------------------------------------------------
+
+
+Final Penalty Function =  3.68201901e-003
+
+
+
+
+
+Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+--------------------------------------------------------------------------------
+k1qf                     7.88904e-001 7.88904e-001 -1.13917e+000 1.13917e+000
+k1qd                     7.89945e-001 7.89945e-001 -1.13917e+000 1.13917e+000
+
+END MATCH SUMMARY
+
+VARIABLE "TAR" SET TO  3.68201901e-003
+enter Twiss module
+
+++++++ table: summ
+
+            length             orbit5               alfa            gammatr 
+            251.52                 -0     0.001867858479        23.13811717 
+
+                q1                dq1            betxmax              dxmax 
+       7.420000039       -8.765276075         13.0076214        4.168776152 
+
+             dxrms             xcomax             xcorms                 q2 
+       1.993734371                  0                  0        7.286067964 
+
+               dq2            betymax              dymax              dyrms 
+      -8.896177155        12.97255805                  0                  0 
+
+            ycomax             ycorms             deltap            synch_1 
+                 0                  0                  0       0.4698037646 
+
+           synch_2            synch_3            synch_4            synch_5 
+      0.2896812037      0.01335551884    0.0009986133978      0.01610718911 
+
+            nflips 
+                 0 
+//
+Beam particle charge                      | 1
+Beam particle mass, u                     | 2
+Beam charge mass ratio                    | 0.5
+Beam mass charge ratio                    | 2
+Beam kinetic energy, GeV/u                | 4
+Magnetic rigidity, T*m                    | 32.3072
+//
+Dipole magnetic field, T                  | 1.4895
+Dipole current, A                         | 5926.51
+Dipole length, m                          | 1.41961
+Dipole half gap, m                        | 0.0275
+Bend radius, m                            | 21.69
+//
+Magnetic field at the lens pole, T        | 1.10804
+Inner radius, m                           | 0.0434741
+Quadrupole length, m                      | 0.43908
+F-quadrupole gradient, T/m                | 25.4872
+D-quadrupole gradient, T/m                | -25.5209
+//
+Circumference, m                          | 251.52
+Dipole length, m                          | 1.41961
+Quadrupole length, m                      | 0.43908
+Lense to lense distance, m                | 3.49092
+Lense to dipole distance, m               | 0.130656
+Dipole to dipole distance, m              | 0.0903928
+Empty space distance, m                   | 0.430656
+//
+Critical energy, GeV/u                    | 21.553
+gammatr                                   | 23.1381
+Q1                                        | 7.42
+Q2                                        | 7.28607
+dQ1                                       | -8.76528
+dQ2                                       | -8.89618
+betxmax, m                                | 13.0076
+betymax, m                                | 12.9726
+dxmax, m                                  | 4.16878
+dymax, m                                  | 0
+Horizontal acceptance (rough), pi.mm.mrad | 300.305
+Vertical acceptance (rough), pi.mm.mrad   | 81.4219
+Horizontal acceptance, pi.mm.mrad         | 128.13
+Vertical acceptance, pi.mm.mrad           | 58.2961
+//
+enter Twiss module
+
+++++++ table: summ
+
+            length             orbit5               alfa            gammatr 
+             31.44                 -0     0.001867858479        23.13811717 
+
+                q1                dq1            betxmax              dxmax 
+      0.9275000048       -1.095659513         13.0076214        4.168776152 
+
+             dxrms             xcomax             xcorms                 q2 
+       2.000409568                  0                  0       0.9107584955 
+
+               dq2            betymax              dymax              dyrms 
+      -1.112022144        12.97255805                  0                  0 
+
+            ycomax             ycorms             deltap            synch_1 
+                 0                  0                  0      0.05872547057 
+
+           synch_2            synch_3            synch_4            synch_5 
+     0.03621015046     0.001669439855    0.0001248266747     0.002013398639 
+
+            nflips 
+                 0 

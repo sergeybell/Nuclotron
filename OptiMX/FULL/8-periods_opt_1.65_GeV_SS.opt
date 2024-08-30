@@ -1,0 +1,147 @@
+#NICA Accelerator Complex
+#NEW NUCLOTRON RING
+#Ring with eight octant arcs. 
+#Each arc has 12 magnets, Field=1.8 Tesla 
+
+#-------MAIN parameters------------------------------------
+#proton mass in  [kG] m_p---------------------------------
+	$m_p=1.6726e-27;  =>  1.6726e-27
+#el  charge in [C]-----------------------------------------
+	$Qp=1.6022e-19;  =>  1.6022e-19
+#speed of ligt in [m/sec]-----------------------------------
+	$c_light=$c*0.01;  =>   299792458
+#Unified atomic mass unit [MeV/u]--------------------------
+	$NMASS=931.494061;  =>  931.494061
+#Kinetic energy [MeV/u]-------------------------------------
+	$W=1650.;  =>        1650
+#Charge and mass-------------------------------------------
+	$Z=1.;  =>           1
+	$A=2.;  =>           2
+#GAMMA------------------------------------------------------
+	$GAMMA=1+($W/($NMASS));  =>  2.77134785
+	$E_kin = ($GAMMA-1) * $NMASS * $A;  =>        3300
+
+	$GAMMA=($NMASS+$W)/$NMASS;  =>  2.77134785
+	$BETA=sqrt(1.-1./$GAMMA^2);  => 0.932629573
+#ENERGY & MASS----------------------------------------------
+	$Energy=$W*$A/$Z ;  =>        3300
+	$Mass=$NMASS*$A/$Z;  =>  1862.98812
+#Beam particle momentum [MeV/u]-----------------------------
+	$P0=$NMASS*$BETA*$GAMMA;  =>   2407.5777
+#Magnetic rigidity [kGs*cm]---------------------------------
+	$BRHO=$A/$Z*$P0/$c*1.e+11;  =>  16061.6296
+#Rigidity of ring in [T*m]----------------------------------
+	$BR=$BRHO/1000;  =>  16.0616296
+#Magnetic field in magnet in [Tesla]------------------------
+	$B=1.8;  =>         1.8
+	$R=$BR/$B*100;  =>  892.312754
+#Full length of all magnets 2pi*R in [cm]------------------
+	$L_mags=2*$pi*$R;  =>  5606.56638
+
+#Cylindrical Electorostatic deflector in [MV/m]------------
+	$E_max = 10;  =>          10
+	$E = -10;  =>         -10
+	$R_def = - ($m_p*$c_light*$c_light/($Qp*$Z)) * ($BETA*$BETA*$GAMMA) / ($E*1000000);  =>  226.165406
+	$G_e = - $E / $R_def;  =>0.0442154271
+	$E_kV_cm = $E*10;  =>        -100
+	$G_e_kV_cm2 = - $E_kV_cm / ($R_def*100);  =>0.00442154271
+
+#6.12*3.14159/180;  =>  0.10681406
+
+#=========ONE ARC STRUCTURE============================
+#
+#FROM MADX-file: nuclotron_fodo.madx
+#ss:	line:=(qf, dr1, qd, dr1);
+#cell:	line:=(qf, dr2, bm, dr3, bm, dr4, qd, dr2, bm, dr3, bm, dr4);
+#octant:	line:=(ss, 3*(cell));
+#nuclotron:	line:=(8*(octant));
+# 
+# arc=3 cells
+# 
+# number of magnets per arc
+$n_mag=6;  =>           6
+# number of arcs
+$n_arc=8;  =>           8
+# number of magnet on 8 arcs
+$N_mag=$n_mag*$n_arc        ;  =>          48
+#Lengt of one magnet in [cm]
+$L_mag=$L_mags/$N_mag;  =>  116.803466
+# angle of bending per one magnet in [deg]------------
+$ang_B=$L_mag/($L_mags)*360;  =>         7.5
+# total angle of bending in the ring in [deg]---------
+$ang_ring=$ang_B*$N_mag;  =>         360
+#=====================================================
+
+
+#*******************************************************************************************
+OptiM
+Energy[MeV]=$W*$A/$Z  Mass[MeV]=$NMASS*$A/$Z
+Emittance: ex[cm]=0.002  ey[cm]=0.002  DP/P=0.001 
+Initial:	BetaX[cm]=82.9797 	BetaY[cm]=824.823 
+	AlfaX=0.654587 	AlfaY=-3.64869 
+	DispersX[cm]=0.0	DispersY[cm]=0 
+	Dsp_PrimeX=0.0	DspPrimeY=0 
+	Dsp_PrimeX=0.0 		DspPrimeY=0 
+	tetaX[deg]=0        	tetaY[deg]=0       
+begin lattice. Number of periods=1 
+
+#====================================ARC===========================================================
+   QD QD O2 BM O5 SF2 QF QF O2 BM O5
+SD QD QD O2 BM O5 SF1 QF QF O2 BM O5
+SD QD QD O2 BM O5 SF2 QF QF O2 BM O4 QD QD 
+#===============================Straight Section===================================================
+RA QF1 QF1 RA QD1 QD1 RA1 O12 QF1 QF1 O1
+
+end lattice
+
+begin list
+#=======================================================================================
+#---------------------------BENDING MAGNETS---------------------------------
+BM 	L[cm]=116.803466       	B[kG]=18    	G[kG/cm]=0
+BK 	L[cm]=30.045		B[kG]=18         	G[kG/cm]=0      	Tilt[deg]=0
+OBM 	L[cm]=141.961
+
+#-----------------------------DRIFTS---------------------------------
+O1 	L[cm]=415.025  
+O12 	L[cm]=415.025/2  
+O2 	L[cm]=13 
+O3 	L[cm]=9
+O4 	L[cm]=43
+O5 	L[cm]=13    
+  
+#---------------------------QUADRUPOLES-------------------------------
+QF 	L[cm]=21.954     	G[kG/cm]=3.105   	Tilt[deg]=0
+QD 	L[cm]=21.954     	G[kG/cm]=-3.17   	Tilt[deg]=0
+	
+QF1 	L[cm]=21.954     	G[kG/cm]=1.16385 	Tilt[deg]=0
+QD1 	L[cm]=21.954     	G[kG/cm]=-1.267  	Tilt[deg]=0
+
+#----------------------------SEXTUPOLES---------------------------------
+SF1 	L[cm]=30         	S[kG/cm/cm)]=0   Tilt[deg]=0
+SF2 	L[cm]=30         	S[kG/cm/cm)]=0   Tilt[deg]=0
+SD 	L[cm]=30         	S[kG/cm/cm)]=0   Tilt[deg]=0
+#----------------------------WIEN FILTER---------------------------------
+RA 	L[cm]=415.025    	B[kG]=0.405      	Gb[kG/cm]=0  	E[kV/cm]=-100      	Ge[kV/cm^2]=0
+RA1 	L[cm]=207.5125   	B[kG]=0.405      	Gb[kG/cm]=0  	E[kV/cm]=-100      	Ge[kV/cm^2]=0
+RA	L[cm]=225-15     B[kG]=0.0    	Gb[kG/cm]=0  	E[kV/cm]=0   	Ge[kV/cm^2]=0
+
+
+
+#=======================================================================================
+end list of elements
+
+BM 	L[cm]=117.472       B[kG]=18/32.307161*5.0627373    	G[kG/cm]=0
+
+QF 	L[cm]=21.954     	G[kG/cm]=3.835/32.307161*5.0627373  	Tilt[deg]=0
+QD 	L[cm]=21.954     	G[kG/cm]=-3.875/32.307161*5.0627373  	Tilt[deg]=0
+
+QF1 	L[cm]=21.954     	G[kG/cm]=3.55/32.307161*5.0627373  	Tilt[deg]=0
+QD1 	L[cm]=21.954     	G[kG/cm]=-2.8/32.307161*5.0627373   	Tilt[deg]=0
+
+#====================================ARC===========================================================
+BK
+   QD QD O2 BM O3 BM O5 SF2 QF QF O2 BM O3 BM O5
+SD QD QD O2 BM O3 BM O5 SF1 QF QF O2 BM O3 BM O5
+SD QD QD O2 BM O3 BM O5 SF2 QF QF O2 BM O3 BM O4 QD QD BK
+#===============================Straight Section===================================================
+O1 QF1 QF1 O1 QD1 QD1 O1 QF1 QF1 O1

@@ -1,0 +1,123 @@
+#set grid;
+
+f1='nuclotron_fodo_rough.tfs';
+f2='nuclotron_fodo.tfs';
+
+stat f1 u 6 nooutput;
+qx=sprintf('%.2f', STATS_max);
+stat f1 u 9 nooutput;
+qy=sprintf('%.2f', STATS_max);
+
+tmargin='set tmargin at screen 0.85; set bmargin at screen 5.6';
+bmargin='set tmargin at screen 0.82; set bmargin at screen 0.11';
+lmargin='set lmargin at screen 0.07; set rmargin at screen 0.9';
+rmargin='set lmargin at screen 0.55; set rmargin at screen 0.95';
+
+set term windows font 'Bold-Times-Roman, 14';
+
+set multiplot layout 2, 1 title '{Nuclotron FODO octant, {/:Italic Q_{x}}/{/:Italic Q_{y}}}=}'.qx."/".qy;
+
+set size ratio .05;
+unset xtics;
+unset ytics;
+unset border;
+unset key;
+set xr [0.:33.44];
+set yr [*:*];
+unset xlabel;
+unset ylabel;
+@tmargin;
+@lmargin;
+p \
+	f2 u 3:((strcol(2) eq 'QUADRUPOLE' && (strcol(39)<0)) ? -1.:0) w fs lt -1 not, \
+	'' u 3:((strcol(2) eq 'QUADRUPOLE' && (strcol(39)>0)) ? 1:0) w fs lt -1 not, \
+	'' u 3:(strcol(2) eq 'SBEND' ? 1.5:0.) w fs lt -1 not, \
+	'' u 3:(strcol(2) eq 'SBEND' ? -1.5:0.) w fs lt -1 not, \
+	'' u 3:(strcol(2) eq 'SOLENOID' ? 1.25:0.) w fs lt -1 not, \
+	'' u 3:(strcol(2) eq 'SOLENOID' ? -1.25:0.) w fs lt -1 not, \
+	'' u 3:(0.) w l lt rgb 'white' not, \
+	'' u 3:(0.) w l lw 1 dt '.-' lt -1 not;
+
+set size noratio;
+set xtics;
+set ytics;
+set border;
+set key bottom right;
+set xr [0.:33.44];
+set yr [0.:15.];
+set ytics nomirror;
+set y2r [-2.:5.];
+set y2tics -2., 1., 5.;
+set xl '{{/:Italic s}, m}';
+set yl '{Beta-functions, m}';
+set y2l '{Dispersion, m}';
+set grid xtics;
+set grid ytics;
+set grid y2tics;
+@bmargin;
+@lmargin;
+p \
+	f2 u 3:4 w l lw 2 lt rgb 'blue' t '{{/:Italic {/Symbol b}_{x}}', \
+	'' u 3:7 w l lw 2 lt rgb 'red' t '{{/:Italic {/Symbol b}_{y}}}', \
+	f2 u 3:16 axes x1y2 w l dt '-' lw 2 lt rgb 'blue' t '{{/:Italic D_{x}}}', \
+	'' u 3:18 axes x1y2 w l dt '-' lw 2 lt rgb 'red' t '{{/:Italic D_{y}}}';
+
+
+unset multiplot;
+
+pause -1 'Hit return to continue...';
+
+set output ARG0[:strstrt(ARG0, '.gpl')-1].'.png';
+set term pngcairo font 'Bold-Times-Roman, 24' size 2048, 1080;
+
+set multiplot layout 2, 1 title '{Nuclotron FODO octant, {/:Italic Q_{x}}/{/:Italic Q_{y}}}=}'.qx."/".qy;
+
+set size ratio .05;
+unset xtics;
+unset ytics;
+unset border;
+unset key;
+set xr [0.:33.44];
+set yr [*:*];
+unset y2tics;
+unset xlabel;
+unset ylabel;
+unset y2l;
+@tmargin;
+@lmargin;
+p \
+	f2 u 3:((strcol(2) eq 'QUADRUPOLE' && (strcol(39)<0)) ? -1.:0) w fs lt -1 not, \
+	'' u 3:((strcol(2) eq 'QUADRUPOLE' && (strcol(39)>0)) ? 1:0) w fs lt -1 not, \
+	'' u 3:(strcol(2) eq 'SBEND' ? 1.5:0.) w fs lt -1 not, \
+	'' u 3:(strcol(2) eq 'SBEND' ? -1.5:0.) w fs lt -1 not, \
+	'' u 3:(strcol(2) eq 'SOLENOID' ? 1.25:0.) w fs lt -1 not, \
+	'' u 3:(strcol(2) eq 'SOLENOID' ? -1.25:0.) w fs lt -1 not, \
+	'' u 3:(0.) w l lt rgb 'white' not, \
+	'' u 3:(0.) w l lw 1 dt '.-' lt -1 not;
+
+set size noratio;
+set xtics;
+set ytics;
+set border;
+set key bottom right;
+set xr [0.:33.44];
+set yr [0.:15.];
+set ytics nomirror;
+set y2r [-2.:5.];
+set y2tics -2., 1., 5.;
+set xl '{{/:Italic s}, m}';
+set yl '{Beta-functions, m}';
+set y2l '{Dispersion, m}';
+set grid xtics;
+set grid ytics;
+set grid y2tics;
+@bmargin;
+@lmargin;
+p \
+	f2 u 3:4 w l lw 2 lt rgb 'blue' t '{{/:Italic {/Symbol b}_{x}}', \
+	'' u 3:7 w l lw 2 lt rgb 'red' t '{{/:Italic {/Symbol b}_{y}}}', \
+	f2 u 3:16 axes x1y2 w l dt '-' lw 2 lt rgb 'blue' t '{{/:Italic D_{x}}}', \
+	'' u 3:18 axes x1y2 w l dt '-' lw 2 lt rgb 'red' t '{{/:Italic D_{y}}}';
+
+
+unset multiplot;

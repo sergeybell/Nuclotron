@@ -1,0 +1,116 @@
+//
+// MADX: Nuclotron FODO (http://www1.jinr.ru/Preprints/2007/107(P9-2007-107).pdf)
+// Date 16/12/2022 16:32:41
+//
+option, -echo, -info, -warn;
+assign, echo=./nuclotron_fodo.log;
+//
+// Macro for tune matching
+tune(structure, qx, qy):	macro={
+	use, sequence=structure;
+	//
+	match, sequence=structure;
+		constraint, range=#e, mux=qx, muy=qy;
+		//
+		vary, name=k1qf, step=1.e-15, lower=k1_lim_lo, upper=k1_lim_up;
+		vary, name=k1qd, step=1.e-15, lower=k1_lim_lo, upper=k1_lim_up;
+		//
+		lmdif, calls=10000, tolerance=1.e-12;
+	endmatch;
+};
+//
+// Kinetic energy, GeV/u
+real const t=4.;
+// Beam definition
+//beam, particle=ion, mass=197.*nmass, charge=79, energy=197.*(t+nmass);
+beam, particle=ion, mass=2.*nmass, charge=1, energy=2.*(t+nmass);
+//
+// Nuclotron tune q1, q2
+real const q1=7.42;
+real const q2=7.28;
+//
+int const nbm=96;
+int const ntbm=11;
+real const hgbm=0.5*0.055;
+real const lbm=21.69*twopi/nbm;	//	http://www1.jinr.ru/Preprints/2007/107(P9-2007-107).pdf
+real const phi=twopi/nbm;
+real const lqm=0.43908;	//	http://www1.jinr.ru/Archive/Pepan/v-32-1/v-32-1-3.pdf
+real bpole=1.6;
+real const rref=sqrt(0.5*0.12*0.5*0.063);
+real const k1_lim_up=bpole/rref/beam->brho;
+real const k1_lim_lo=-k1_lim_up;
+//
+// Define elements Nuclotron
+qf:	quadrupole,	l:=lqm,	k1:=k1qf;
+qd:	quadrupole,	l:=lqm,	k1:=-k1qd;
+//
+bm:	sbend,	l:=lbm,	angle:=phi,	e1:=0.,	e2:=0.,	hgap:=hgbm,	fint:=0.5,	fintx:=0.5;
+//
+dr1:	drift,	l:=3.505+(0.425-lqm);
+dr4:	drift,	l:=0.4275+0.5*(0.425-lqm)+0.5*(1.44-lbm);
+dr2:	drift,	l:=0.1275+0.5*(0.425-lqm)+0.5*(1.44-lbm);
+dr3:	drift,	l:=0.07+(1.44-lbm);
+//
+// Define Nuclotron structure
+ss:	line:=(qf, dr1, qd, dr1);
+cell:	line:=(qf, dr2, bm, dr3, bm, dr4, qd, dr2, bm, dr3, bm, dr4);
+octant:	line:=(ss, 3*(cell));
+nuclotron:	line:=(8*(octant));
+//
+// Initialization
+real k1qf=k1_lim_up;
+real k1qd=k1qf;
+// Matching tune
+exec, tune(nuclotron, q1, q2);
+//
+use, sequence=nuclotron;
+select, flag=twiss, clear=true;
+twiss, chrom=true, file=./nuclotron_fodo_rough.tfs;
+//
+call, file=./printout.madx;
+//
+use, sequence=octant;
+select, flag=twiss, clear=true;
+twiss;
+//
+drssp1:	drift,	l:=dr1->l/20.;
+drss1:	line:=(20*(drssp1));
+drssp2:	drift,	l:=dr2->l/20.;
+drss2:	line:=(20*(drssp2));
+drssp3:	drift,	l:=dr3->l/20.;
+drss3:	line:=(20*(drssp3));
+drssp4:	drift,	l:=dr4->l/20.;
+drss4:	line:=(20*(drssp4));
+//
+qfssp:	quadrupole,	l:=lqm/20.,	k1:=qf->k1;
+qfss:	line:=(20*(qfssp));
+qdssp:	quadrupole,	l:=lqm/20.,	k1:=qd->k1;
+qdss:	line:=(20*(qdssp));
+//
+qfssp->k1:=qf->k1;
+qdssp->k1:=qd->k1;
+//
+bmssp:	sbend,	l=lbm/20.,	angle=phi/20.,	hgap:=hgbm;
+bmss:	line:=(20*(bmssp));
+//
+ssss:	line:=(qfss, drss1, qdss, drss1);
+cellss:	line:=(qfss, drss2, bmss, drss3, bmss, drss4, qdss, drss2, bmss, drss3, bmss, drss4);
+octantss:	line:=(ssss, 3*(cellss));
+nuclotronss:	line:=(8*(octantss));
+// Matching tune
+exec, tune(nuclotronss, q1, q2);
+//
+use, sequence=nuclotronss;
+select, flag=twiss, clear=true;
+twiss, chrom=true;
+//
+call, file=./printout.madx;
+//
+use, sequence=octantss;
+select, flag=twiss, clear=true;
+twiss, chrom=true, file=./nuclotron_fodo.tfs;
+//
+setplot, post=1;
+plot, vaxis1=betx, bety, vaxis2=dx, dy, haxis=s, colour=100, noversion=true, table=twiss, title='Nuclotron FODO octant', file=./nuclotron_fodo;
+//
+stop;

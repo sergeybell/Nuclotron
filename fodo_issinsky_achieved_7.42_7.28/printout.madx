@@ -1,0 +1,65 @@
+//
+// MADX: Nuclotron FODO
+// Date 16/12/2022 16:32:41
+//
+option, -echo, -info, -warn;
+//
+// Vacuum permeability, H/m
+real const mu0=4.e-7*pi;
+// Maximal beam momentum spread (separatrix half height), 1
+real const dpmax=4.e-3;
+// Maximal horizontal and vertical closed orbit deviation, m
+real const xcomax=5.e-3;
+real const ycomax=5.e-3;
+// Vacuum chamber aperture (semi-major axis and semi-minor axis), m
+real const rx=0.5*0.125;
+real const ry=0.5*0.065;
+//
+print, text='//';
+printf, text='Beam particle charge                      | %g', value=beam->charge;
+printf, text='Beam particle mass, u                     | %g', value=beam->mass/nmass;
+printf, text='Beam charge mass ratio                    | %g', value=(beam->charge)/(beam->mass/nmass);
+printf, text='Beam mass charge ratio                    | %g', value=(beam->mass/nmass)/(beam->charge);
+printf, text='Beam kinetic energy, GeV/u                | %g', value=nmass*(beam->gamma-1.);
+printf, text='Magnetic rigidity, T*m                    | %g', value=beam->brho;
+//
+print, text='//';
+printf, text='Dipole magnetic field, T                  | %g', value=twopi*beam->brho/nbm/bm->l;
+printf, text='Dipole current, A                         | %g', value=(twopi*beam->brho/nbm/bm->l)*(2.*hgbm)/ntbm/mu0;
+printf, text='Dipole length, m                          | %g', value=bm->l;
+printf, text='Dipole half gap, m                        | %g', value=bm->hgap;
+printf, text='Bend radius, m                            | %g', value=nbm*bm->l/twopi;
+//
+print, text='//';
+printf, text='Magnetic field at the lens pole, T        | %g', value=beam->brho*qf->k1*rref;
+printf, text='Inner radius, m                           | %g', value=rref;
+printf, text='Quadrupole length, m                      | %g', value=qf->l;
+printf, text='F-quadrupole gradient, T/m                | %g', value=beam->brho*qf->k1;
+printf, text='D-quadrupole gradient, T/m                | %g', value=beam->brho*qd->k1;
+//
+print, text='//';
+printf, text='Circumference, m                          | %g', value=table(summ, length);
+printf, text='Dipole length, m                          | %g', value=bm->l;
+printf, text='Quadrupole length, m                      | %g', value=qf->l;
+printf, text='Lense to lense distance, m                | %g', value=dr1->l;
+printf, text='Lense to dipole distance, m               | %g', value=dr2->l;
+printf, text='Dipole to dipole distance, m              | %g', value=dr3->l;
+printf, text='Empty space distance, m                   | %g', value=dr4->l;
+print, text='//';
+printf, text='Critical energy, GeV/u                    | %g', value=table(summ, gammatr)*nmass;
+printf, text='gammatr                                   | %g', value=table(summ, gammatr);
+printf, text='Q1                                        | %g', value=table(summ, q1);
+printf, text='Q2                                        | %g', value=table(summ, q2);
+printf, text='dQ1                                       | %g', value=table(summ, dq1);
+printf, text='dQ2                                       | %g', value=table(summ, dq2);
+printf, text='betxmax, m                                | %g', value=table(summ, betxmax);
+printf, text='betymax, m                                | %g', value=table(summ, betymax);
+printf, text='dxmax, m                                  | %g', value=table(summ, dxmax);
+printf, text='dymax, m                                  | %g', value=table(summ, dymax);
+printf, text='Horizontal acceptance (rough), pi.mm.mrad | %g', value=rx^2/table(summ, betxmax)/1.e-6;
+printf, text='Vertical acceptance (rough), pi.mm.mrad   | %g', value=ry^2/table(summ, betymax)/1.e-6;
+printf, text='Horizontal acceptance, pi.mm.mrad         | %g', value=(rx-table(summ, dxmax)*dpmax-xcomax)^2/table(summ, betxmax)/1.e-6;
+printf, text='Vertical acceptance, pi.mm.mrad           | %g', value=(ry-table(summ, dymax)*dpmax-ycomax)^2/table(summ, betymax)/1.e-6;
+print, text='//';
+//
+return;
