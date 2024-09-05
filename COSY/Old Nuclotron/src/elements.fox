@@ -237,8 +237,8 @@ PROCEDURE WIEN L2 {m} B1 {kGs} B2 {kV/cm} TILT {rad}; {homogenous WF; closed orb
   VARIABLE BX 1; VARIABLE EY 1;
   VARIABLE BETA 1; VARIABLE DWMDM 1;
   L1:=L2; {in meters}
-  B0:=B1/10; {in Tesla}
-  B3:=B2*1e5;   {in V/m}
+  B0:=ABS(B1)/10; {in Tesla}
+  B3:=ABS(B2)*1e5;   {in V/m}
   R2:=CONS(CHIM)/B0;
   R1:=CONS(CHIE)/B3;
   { WRITE 6 'RE = '&SF(R1, '(E15.7)')&' RB ='&SF(R2, '(E15.7)'); }

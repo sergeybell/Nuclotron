@@ -27,16 +27,17 @@ PROCEDURE MAIN;
   GAMMA := 1.143914;
   MRKR := 'NUC1';
 
-  OV 2 3 0;
+  OV 3 3 0;
   {DAEPS 1E-12;}
   { SET lattice parameters }
   SET_FOR_DEUTERONS GAMMA;
 
-  EB1 := 100.0;
   {WIEN FILTER}
   {spin tune ~ 10^-4}
-  EB1 := 146.8;
+  
   {spin tune ~ 10^-7}
+  EB1 := 166.8620007222804; {2.6*2}
+  EB1 := 132.6739162456733; {3.27*2}
 
   {EL DEFLECTOR}
 
