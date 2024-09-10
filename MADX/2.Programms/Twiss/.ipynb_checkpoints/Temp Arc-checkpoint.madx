@@ -1,0 +1,23 @@
+CHDIR, DIR = "/Users/Bell/GIT_REPOS/NUCLOTRON/MADX/1.Sequences/Full Sequence/";
+!CALL FILE = "Nuclotron 4GeV deutron 3FODO";
+!CALL FILE = "Nuclotron+kicker";
+CALL FILE = "8-periods_270_GeV_deuton+WF.seq";
+
+TITLE, "Nuclotron Modernization";
+
+!beam, MASS=1.862988122,CHARGE=1, ENERGY=9.862988122,
+!      EX=2e-05, EY=2e-05, SIGE=0.001;
+
+beam, MASS=1.862988122,CHARGE=1, ENERGY=2.132988122,
+      EX=2e-05, EY=2e-05, SIGE=0.001;
+
+USE, PERIOD = MACHINE;
+CHDIR, DIR = "/Users/Bell/GIT_REPOS/NUCLOTRON/MADX";
+
+TWISS, DELTAP = 0.00, file=tbl/twiss.tbl;
+plot, haxis=s, vaxis1=betx,bety, vaxis2=dx, colour=100, style=1, noversion, file=img/twiss;
+plot, haxis=s, vaxis=dx, colour=100, style=1, noversion, file=img/twiss;
+
+!CHDIR, DIR = "/Users/Bell/GIT_REPOS/NUCLOTRON/MADX/2.Programms/Twiss";
+!call, file=./printout.madx;
+stop;
