@@ -1,0 +1,47 @@
+!+
+! Translated from MADX to Bmad by madx_to_bmad.py
+! File: Nuclotron_modernized_ARC_DEUTRON_48 mags_270 MeV_130 kv_Superper=WF+B+WF+WF+B+WF(disp compensated) .seq
+!-
+
+
+!TITLE Converted from LATTICE EDITOR: Nuclotron_modernized_ARC_DEUTRON_48 mags_270 MeV_130 kv_Superper=WF+B+WF+WF+B+WF(disp compensated) .opt[*].  Tue Sep 10 14:38:50 2024
+
+!  Kinetic energy=270 MeV, mass=1876.54 MeV
+!  BetaX=2.39604 m,  AlphaX=-5.49393e-16,  BetaY=12.0604 m,  AlphaY=1.34646e-15
+!  DispX=0.00507595 m,  DispPX=4.79278e-16,  DispY=0 m,  DispPY=0
+
+parameter[E_tot] = 2.146544 * 1e9
+parameter[geometry] = closed
+
+bm: sbend, l = 1.7764716, angle = 0.1308996918
+o1: drift, l = 3.27
+o3: drift, l = 2.6
+o2: drift, l = 0.25
+o4: drift, l = 0.45
+osf: drift, l = 0.1
+osd: drift, l = 0.1
+
+!-----w WF-----
+!QF: QUADRUPOLE,  L=0.21,  K1=0.8311685811;
+!QF1: QUADRUPOLE,  L=0.2,  K1=1.269624362;
+!QF0: QUADRUPOLE,  L=0.2,  K1=1.302100799;
+!QD1: QUADRUPOLE,  L=0.2,  K1=-1.371991701;
+!QD: QUADRUPOLE,  L=0.2,  K1=-0.8283039099;
+
+!-----plain----
+qf: quadrupole, l = 0.21, k1 = 1.003756466
+qf1: quadrupole, l = 0.2, k1 = 1.111418801
+qf0: quadrupole, l = 0.2, k1 = 1.000072002
+qd1: quadrupole, l = 0.2, k1 = -1.314462407
+qd: quadrupole, l = 0.2, k1 = -0.7851569388
+
+!--------------
+sf: sextupole, l = 0.12, k2 = 6.193661406
+sd: sextupole, l = 0.12, k2 = -9.005980982
+
+MACHINE: LINE=(QD, O1, QF1, QF1, O2, BM, O4, QD1, QD1, O2, BM, O4, QF0,QF0, O2, BM, O4, QD1, QD1, Osd, Sd, O3, QF, Osf,
+          Sf, Osf, QF, O3, Sd, Osd,QD1, QD1, O4, BM, O2, QF0, QF0, O4, BM, O2, QD1, QD1, O4, BM, O2, QF1, QF1,O1, QD)
+
+RING: LINE = (8*MACHINE)
+
+USE, RING
