@@ -207,10 +207,10 @@ $ang_ring=$ang_B*$Nmag;  =>         360
 OptiM
 Energy[MeV]=270        Mass[MeV]=1876.544 
 Emittance: ex[cm]=0.002  ey[cm]=0.002  DP/P=0.001 
-Initial:	BetaX[cm]=239.604 	BetaY[cm]=1206.04 
-	AlfaX=-5.49393e-16 	AlfaY=1.34646e-15 
-	DispersX[cm]=0.507595 	DispersY[cm]=0 
-	Dsp_PrimeX=4.79278e-16 	DspPrimeY=0 
+Initial:	BetaX[cm]=115.301 	BetaY[cm]=1175.05 
+	AlfaX=-3.6716e-16 	AlfaY=-1.138e-15 
+	DispersX[cm]=1.08156 	DispersY[cm]=0 
+	Dsp_PrimeX=-4.31071e-16 	DspPrimeY=0 
 	X[cm]=0.950    	Y[cm]=0.000    	Z[cm]=0.000    	S[cm]=0.000    
 	tetaX[deg]=0        	tetaY[deg]=0        
 begin lattice. Number of periods=1 
@@ -220,21 +220,21 @@ begin lattice. Number of periods=1
 #======z========================Straight Section==================================
 #QF O5 QD 
 #QD RA QF1
-#QD ORA RA QF1
-QD O1 QF1
+QD ORA RA QF1
+#QD O1 QF1
 #====================================ARC==========================================
 QF1 O2 BM  O4 QD1 QD1 O2 BM  O4 QF0
 QF0 O2 BM  O4 QD1 
-QD1 Osd Sd O3 QF
-#QD1 Osd Sd RA ORA QF 
+#QD1 Osd Sd O3 QF
+QD1 Osd Sd RA ORA QF 
 Osf Sf  Osf 
-#QF ORA RA Sd Osd QD1
-QF O3 Sd Osd QD1
+QF ORA RA Sd Osd QD1
+#QF O3 Sd Osd QD1
 QD1 O4 BM  O2 QF0
 QF0 O4 BM  O2 QD1 QD1 O4 BM  O2 QF1
 #===============================Straight Section==================================
-QF1 O1 QD
-#QF1 RA ORA QD
+#QF1 O1 QD
+QF1 RA ORA QD
 #QF1 RA QD 
 #QD O5 QF
 #O5
@@ -260,13 +260,6 @@ O5 	L[cm]=263.7
 Osf 	L[cm]=10       
 Osd 	L[cm]=10       
   
-#---------------------------QUADRUPOLES wo WF-------------------------------
-QF 	L[cm]=21         	G[kG/cm]=0.3489549 	Tilt[deg]=0
-QF1 	L[cm]=20         	G[kG/cm]=0.3863836 	Tilt[deg]=0
-QF0 	L[cm]=20         	G[kG/cm]=0.347674 	Tilt[deg]=0
-QD1 	L[cm]=20         	G[kG/cm]=-0.4569715 	Tilt[deg]=0
-QD 	L[cm]=20         	G[kG/cm]=-0.272959 	Tilt[deg]=0
-
 #---------------------------QUADRUPOLES w WF-------------------------------
 QF 	L[cm]=21         	G[kG/cm]=0.2889549 	Tilt[deg]=0
 QF1 	L[cm]=20         	G[kG/cm]=0.4413836 	Tilt[deg]=0
@@ -274,12 +267,20 @@ QF0 	L[cm]=20         	G[kG/cm]=0.452674 	Tilt[deg]=0
 QD1 	L[cm]=20         	G[kG/cm]=-0.4769715 	Tilt[deg]=0
 QD 	L[cm]=20         	G[kG/cm]=-0.287959 	Tilt[deg]=0
 
+#---------------------------QUADRUPOLES wo WF-------------------------------
+QF 	L[cm]=21         	G[kG/cm]=0.3489549 	Tilt[deg]=0
+QF1 	L[cm]=20         	G[kG/cm]=0.3863836 	Tilt[deg]=0
+QF0 	L[cm]=20         	G[kG/cm]=0.347674 	Tilt[deg]=0
+QD1 	L[cm]=20         	G[kG/cm]=-0.4569715 	Tilt[deg]=0
+QD 	L[cm]=20         	G[kG/cm]=-0.272959 	Tilt[deg]=0
+
+
 #----------------------------SEXTUPOLES---------------------------------
 Sf 	L[cm]=12         	S[kG/cm/cm)]=0.0215322   Tilt[deg]=0
 Sd 	L[cm]=12         	S[kG/cm/cm)]=-0.0313092   Tilt[deg]=0
 #----------------------------WIEN FILTER---------------------------------
 #RA 	L[cm]=327        	B[kG]=0.0       	Gb[kG/cm]=0  	E[kV/cm]=0.0      	Ge[kV/cm^2]=0
-#RA 	L[cm]=327/2      B[kG]=0.8931     	Gb[kG/cm]=0  	E[kV/cm]=-130      	Ge[kV/cm^2]=0
+RA 	L[cm]=327/2      B[kG]=0.8931     	Gb[kG/cm]=0  	E[kV/cm]=-130      	Ge[kV/cm^2]=0
 #RA 	L[cm]=260        	B[kG]=1.66       	Gb[kG/cm]=0  	E[kV/cm]=-130      	Ge[kV/cm^2]=0
 
 #=======================================================================================

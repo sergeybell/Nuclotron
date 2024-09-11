@@ -47,10 +47,13 @@ PROCEDURE RUN;
   OV 3 3 0;
   {DAEPS 1E-12;} {this sets DA garbage collection tolerance so}
                {that the TRANSFER MAP doesnt get the 1e-15 ABERRATION coefficient}
-  SET_FOR_DEUTERONS 1.28783;
+
+
+  SET_FOR_DEUTERONS 1.143914;
 
   {WIEN FILTER}
   {EB1 := 0.0;}
+  EB1 := -130.0; {3.27*2}
 
   {EL DEFLECTOR}
 
