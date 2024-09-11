@@ -1,0 +1,60 @@
+!+
+! Translated from MADX to Bmad by madx_to_bmad.py
+! File: Nuclotron+kicker
+!-
+
+
+!TITLE Converted from LATTICE EDITOR: 8-periods+kicker.opt[*].  Thu Aug 08 19:31:13 2024
+
+!  Kinetic energy=540 MeV, mass=1862.99 MeV
+!  BetaX=1.0541 m,  AlphaX=0.500139,  BetaY=11.8581 m,  AlphaY=-3.16446
+!  DispX=0 m,  DispPX=0,  DispY=0 m,  DispPY=0
+
+parameter[p0c] = 4e9
+parameter[particle] = deuteron
+parameter[geometry] = closed
+
+bm: sbend, l = 1.17472, angle = 0.06544976199
+!bk: sbend, l = 0.30045, angle = 0.0
+bk: sbend, l = 0.30045, angle = 0.1068216594
+!bk: sbend, l = 0.30045, angle = 0.5
+o2: drift, l = 0.130656
+o3: drift, l = 0.0903928
+o4: drift, l = 0.430656
+o5: drift, l = 0.130656
+qf: quadrupole, l = 0.21954, k1 = 1.186055811
+qd: quadrupole, l = 0.21954, k1 = -1.199424468
+qf1: quadrupole, l = 0.21954, k1 = 1.21173362
+qd1: quadrupole, l = 0.21954, k1 = -1.26855703
+sf1: sextupole, l = 0.3, k2 = 0
+sf2: sextupole, l = 0.3, k2 = 0
+sd: sextupole, l = 0.3, k2 = 0
+sep: elsep, l = 2.1, e_field = 3.5e6, tilt = -pi/2
+!sep: elsep, l = 2.1, e_field = 0.0, tilt = -pi/2
+
+MACHINE: LINE=(QD, QD, O2, BM, O3, BM, O5, SF2, QF, QF, O2, BM, O3, BM,O5, SD, QD, QD, O2, BM, O3, BM, O5, SF1, QF, QF,
+          O2, BM, O3, BM, O5, SD,QD, QD, O2, BM, O3, BM, O5, SF2, QF, QF, O2, BM, O3, BM, O4, QD, QD, BK,SEP, QF1, QF1, SEP, QD1,
+          QD1, SEP, QF1, QF1, SEP, BK, QD, QD, O2, BM, O3, BM,O5, SF2, QF, QF, O2, BM, O3, BM, O5, SD, QD, QD, O2, BM, O3, BM,
+          O5, SF1,QF, QF, O2, BM, O3, BM, O5, SD, QD, QD, O2, BM, O3, BM, O5, SF2, QF, QF,O2, BM, O3, BM, O4, QD, QD, BK, SEP,
+          QF1, QF1, SEP, QD1, QD1, SEP, QF1, QF1,SEP, BK, QD, QD, O2, BM, O3, BM, O5, SF2, QF, QF, O2, BM, O3, BM, O5, SD,QD, QD,
+          O2, BM, O3, BM, O5, SF1, QF, QF, O2, BM, O3, BM, O5, SD, QD, QD,O2, BM, O3, BM, O5, SF2, QF, QF, O2, BM, O3, BM, O4,
+          QD, QD, BK, SEP, QF1,QF1, SEP, QD1, QD1, SEP, QF1, QF1, SEP, BK, QD, QD, O2, BM, O3, BM, O5, SF2,QF, QF, O2, BM, O3,
+          BM, O5, SD, QD, QD, O2, BM, O3, BM, O5, SF1, QF, QF,O2, BM, O3, BM, O5, SD, QD, QD, O2, BM, O3, BM, O5, SF2, QF, QF,
+          O2, BM,O3, BM, O4, QD, QD, BK, SEP, QF1, QF1, SEP, QD1, QD1, SEP, QF1, QF1, SEP, BK,QD, QD, O2, BM, O3, BM, O5, SF2,
+          QF, QF, O2, BM, O3, BM, O5, SD, QD, QD,O2, BM, O3, BM, O5, SF1, QF, QF, O2, BM, O3, BM, O5, SD, QD, QD, O2, BM,O3, BM,
+          O5, SF2, QF, QF, O2, BM, O3, BM, O4, QD, QD, BK, SEP, QF1, QF1, SEP,QD1, QD1, SEP, QF1, QF1, SEP, BK, QD, QD, O2, BM,
+          O3, BM, O5, SF2, QF, QF,O2, BM, O3, BM, O5, SD, QD, QD, O2, BM, O3, BM, O5, SF1, QF, QF, O2, BM,O3, BM, O5, SD, QD, QD,
+          O2, BM, O3, BM, O5, SF2, QF, QF, O2, BM, O3, BM,O4, QD, QD, BK, SEP, QF1, QF1, SEP, QD1, QD1, SEP, QF1, QF1, SEP, BK,
+          QD, QD,O2, BM, O3, BM, O5, SF2, QF, QF, O2, BM, O3, BM, O5, SD, QD, QD, O2, BM,O3, BM, O5, SF1, QF, QF, O2, BM, O3, BM,
+          O5, SD, QD, QD, O2, BM, O3, BM,O5, SF2, QF, QF, O2, BM, O3, BM, O4, QD, QD, BK, SEP, QF1, QF1, SEP, QD1,QD1, SEP, QF1,
+          QF1, SEP, BK, QD, QD, O2, BM, O3, BM, O5, SF2, QF, QF, O2, BM,O3, BM, O5, SD, QD, QD, O2, BM, O3, BM, O5, SF1, QF, QF,
+          O2, BM, O3, BM,O5, SD, QD, QD, O2, BM, O3, BM, O5, SF2, QF, QF, O2, BM, O3, BM, O4, QD,QD, BK, SEP, QF1, QF1, SEP, QD1,
+          QD1, SEP, QF1, QF1, SEP, BK)
+
+PERIOD: LINE = (QD, QD, O2, BM, O3, BM, O5, SF2, QF, QF, O2, BM, O3, BM,O5, SD, QD, QD, O2, BM, O3, BM, O5, SF1, QF, QF,
+          O2, BM, O3, BM, O5, SD,QD, QD, O2, BM, O3, BM, O5, SF2, QF, QF, O2, BM, O3, BM, O4, QD, QD, BK,SEP, QF1, QF1, SEP, QD1,
+          QD1, SEP, QF1, QF1, SEP)
+
+FULL: LINE = (8*PERIOD)
+
+USE, FULL

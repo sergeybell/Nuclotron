@@ -1,0 +1,76 @@
+
+!+
+! Translated from MADX to Bmad by madx_to_bmad.py
+! File: 8-periods_270_GeV_deuton+WF.seq
+!-
+
+
+!TITLE Converted from LATTICE EDITOR: 8-periods+kicker+WF_270_MeV (disp comp).opt[*].  Tue Sep 10 19:21:41 2024
+
+!  Kinetic energy=270 MeV, mass=1862.99 MeV
+!  BetaX=1.86616 m,  AlphaX=0.724137,  BetaY=13.2372 m,  AlphaY=-3.12733
+!  DispX=0 m,  DispPX=0,  DispY=0 m,  DispPY=0
+
+!OPTION, -ECHO;
+!ASSIGN, ECHO="line.echo";
+
+!beam, MASS=1.862988122,CHARGE=1, ENERGY=2.132988122,
+!      EX=2e-05, EY=2e-05, SIGE=0.001;
+
+!use,period=machine;
+
+!twiss energy=2.132988122, betx=1.86616, alfx=0.724137,
+!     bety=13.2372, alfy=-3.12733,
+
+BEGINNING[BETA_A]  = 1.28561
+BEGINNING[ALPHA_A]=  0.32205
+BEGINNING[BETA_B] = 13.2084
+BEGINNING[ALPHA_B] = -2.668
+BEGINNING[ETA_X] = -28.5597e-2 
+BEGINNING[deta_x_ds] = -0.056
+
+parameter[E_tot] = 2.132988 * 1e9
+!parameter[p0c] = 135e6
+parameter[particle] = deuteron
+parameter[geometry] = open
+
+bm: sbend, l = 1.78931916, angle = 0.1308996937
+bk: sbend, l = 0.3, angle = 0.08610130667
+!bk: sbend, l = 0.3, angle = 0
+o1: drift, l = 3.35
+o3: drift, l = 0.09
+o4: drift, l = 0.43
+o5: drift, l = 0.13
+qf: quadrupole, l = 0.2, k1 = 1.702861724
+qd: quadrupole, l = 0.2, k1 = -1.408198531
+qf1: quadrupole, l = 0.2, k1 = 1.154482524
+qd1: quadrupole, l = 0.2, k1 = -1.039034272
+sf1: sextupole, l = 0.3, k2 = 0
+sf2: sextupole, l = 0.3, k2 = 0
+sd: sextupole, l = 0.3, k2 = 0
+!ra: elseparator, l = 3.35, e_field = 0, tilt = 0
+ra: elsep, l = 3.35, e_field = -13e6, tilt = pi/2
+!ra: sbend, l = 3.35, angle = -0.086101367
+
+
+MACHINE: LINE=(QD, QD, O3, BM, O5, SF2, QF, QF, O3, BM, O5, SD, QD, QD,O3, BM, O5, SF1, QF, QF, O3, BM, O5, SD, QD, QD,
+          O3, BM, O5, SF2, QF, QF,O3, BM, O4, QD, QD, BK, RA, QF1, QF1, O1, QD1, QD1, O1, QF1, QF1, RA, BK)
+
+FULL: LINE=(8*MACHINE)
+
+!USE, FULL
+USE, MACHINE
+
+!beam, MASS=1.862988122,CHARGE=1, ENERGY=2.132988122,
+!      EX=2e-05, EY=2e-05, SIGE=0.001;
+
+!use,period=machine;
+
+!twiss energy=2.132988122, betx=1.86616, alfx=0.724137,
+!     bety=13.2372, alfy=-3.12733,
+!     dx=0, dpx=0,
+!     dy=0, dpy=0;
+
+!survey,;
+
+!stop;
