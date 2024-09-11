@@ -26,11 +26,13 @@ BEGINNING[BETA_A]  = 1.28561
 BEGINNING[ALPHA_A]=  0.32205
 BEGINNING[BETA_B] = 13.2084
 BEGINNING[ALPHA_B] = -2.668
+BEGINNING[ETA_X] = -28.5597e-2 
+BEGINNING[deta_x_ds] = -0.056
 
-parameter[E_tot] = 2.132988e9
+parameter[E_tot] = 2.132988 * 1e9
 !parameter[p0c] = 135e6
 parameter[particle] = deuteron
-parameter[geometry] = closed
+parameter[geometry] = open
 
 bm: sbend, l = 1.78931916, angle = 0.1308996937
 bk: sbend, l = 0.3, angle = 0.08610130667
@@ -47,7 +49,7 @@ sf1: sextupole, l = 0.3, k2 = 0
 sf2: sextupole, l = 0.3, k2 = 0
 sd: sextupole, l = 0.3, k2 = 0
 !ra: elseparator, l = 3.35, e_field = 0, tilt = 0
-ra: elsep, l = 3.35, e_field = 13e5, tilt = -pi/2
+ra: elsep, l = 3.35, e_field = -13e6, tilt = pi/2
 !ra: sbend, l = 3.35, angle = -0.086101367
 
 
@@ -56,7 +58,8 @@ MACHINE: LINE=(QD, QD, O3, BM, O5, SF2, QF, QF, O3, BM, O5, SD, QD, QD,O3, BM, O
 
 FULL: LINE=(8*MACHINE)
 
-USE, FULL
+!USE, FULL
+USE, MACHINE
 
 !beam, MASS=1.862988122,CHARGE=1, ENERGY=2.132988122,
 !      EX=2e-05, EY=2e-05, SIGE=0.001;
