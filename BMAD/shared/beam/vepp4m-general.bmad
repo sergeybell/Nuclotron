@@ -1,0 +1,600 @@
+!+
+! Translated from MADX to Bmad by madx_to_bmad.py
+! File: vepp4m.x
+!-
+
+! Converted from Acceleraticum
+! Title: VEPP-4M Storage Ring
+! Date:  Wed Nov 30 17:35:16 2022
+
+parameter[lattice]     = "vepp4m"
+parameter[geometry] = Closed          
+parameter[absolute_time_tracking] = F
+
+parameter[e_tot]                      = 4.7500E9
+parameter[particle]                 = Electron
+bmad_com[radiation_damping_on] = T
+
+beginning[beta_a]    = 14.9752399924588
+beginning[alpha_a]   = 1.00995713759449E-3
+beginning[eta_x]     = -1.42107948440071
+beginning[etap_x]    = -1.2550640397734E-4
+beginning[beta_b]    = 2.86137967317111
+beginning[alpha_b]   = 2.20449535670676E-3
+beginning[eta_y]     = -4.9929938389262E-36
+beginning[etap_y]    = -1.9504370774076E-36
+beginning[cmat_11]   = 5.57778499783899E-35
+beginning[cmat_12]   = 4.10283626382577E-35
+beginning[cmat_21]   = -2.14530050199994E-36
+beginning[cmat_22]   = 1.2016254285884E-35
+
+particle_start[x]  = 0
+particle_start[px] = 0
+particle_start[y]  = 0
+particle_start[py] = 0
+particle_start[z]  = 0
+particle_start[pz] = 0
+
+frf = 818937 	! 818937.225696932
+factor = 1.00000000000000
+!-------------------------------------------------------
+
+ctx: kicker, l = 0.07! XCor:CTX
+ip: marker
+iv4e: multipole
+iv4p: multipole
+kedr: solenoid, l = 1.25
+n10d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX10
+n10d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ10 ZCor:NRZ10
+n10d.dq: sbend, l = 0.01956
+n10d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX10
+n10f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX10
+n10f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n10f.fq: sbend, l = 0.01986
+n10f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX10
+n11d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX11
+n11d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ11 ZCor:NRZ11
+n11d.dq: sbend, l = 0.01956
+n11d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX11
+n11f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX11
+n11f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n11f.fq: sbend, l = 0.01986
+n11f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX11
+n12d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX12
+n12d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ12 ZCor:NRZ12
+n12d.dq: sbend, l = 0.01956
+n12d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX12
+n12f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX12
+n12f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n12f.fq: sbend, l = 0.01986
+n12f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX12
+n13d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX13
+n13d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ13 ZCor:NRZ13
+n13d.dq: sbend, l = 0.01956
+n13d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX13
+n13f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX13
+n13f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n13f.fq: sbend, l = 0.01986
+n13f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX13
+n14d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX14
+n14d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ14 ZCor:NRZ14
+n14d.dq: sbend, l = 0.01956
+n14d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX14
+n14f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX14
+n14f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n14f.fq: sbend, l = 0.01986
+n14f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX14
+n15d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX15
+n15d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ15 ZCor:NRZ15
+n15d.dq: sbend, l = 0.01956
+n15d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX15
+n15f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX15
+n15f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n15f.fq: sbend, l = 0.01986
+n15f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX15
+n16d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX16
+n16d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ16 ZCor:NRZ16
+n16d.dq: sbend, l = 0.01956
+n16d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX16
+n16f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX16
+n16f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n16f.fq: sbend, l = 0.01986
+n16f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX16
+n17f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX17
+n17f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n17f.fq: sbend, l = 0.01986
+n17f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX17
+n1d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX1
+n1d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ1 ZCor:NRZ1
+n1d.dq: sbend, l = 0.01956
+n1d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX1
+n1f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX0
+n1f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n1f.fq: sbend, l = 0.01986
+n1f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX0
+n2d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX2
+n2d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ2 ZCor:NRZ2
+n2d.dq: sbend, l = 0.01956
+n2d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX2
+n2f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX2
+n2f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n2f.fq: sbend, l = 0.01986
+n2f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX2
+n3d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX3
+n3d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ3 ZCor:NRZ3
+n3d.dq: sbend, l = 0.01956
+n3d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX3
+n3f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX3
+n3f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n3f.fq: sbend, l = 0.01986
+n3f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX3
+n4d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX4
+n4d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ4 ZCor:NRZ4
+n4d.dq: sbend, l = 0.01956
+n4d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX4
+n4f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX4
+n4f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n4f.fq: sbend, l = 0.01986
+n4f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX4
+n5d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX5
+n5d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ5 ZCor:NRZ5
+n5d.dq: sbend, l = 0.01956
+n5d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX5
+n5f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX5
+n5f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n5f.fq: sbend, l = 0.01986
+n5f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX5
+n6d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX6
+n6d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ6 ZCor:NRZ6
+n6d.dq: sbend, l = 0.01956
+n6d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX6
+n6f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX6
+n6f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n6f.fq: sbend, l = 0.01986
+n6f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX6
+n7d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX7
+n7d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ7 ZCor:NRZ7
+n7d.dq: sbend, l = 0.01956
+n7d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX7
+n7f.bb: sbend, l = 1.89695, angle = 0.05490038873
+n7f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n7f.fq: sbend, l = 0.01986
+n7f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772
+n8d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX8
+n8d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ8 ZCor:NRZ8
+n8d.dq: sbend, l = 0.01956
+n8d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX8
+n8f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX8
+n8f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n8f.fq: sbend, l = 0.01986
+n8f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX8
+n9d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:NRX9
+n9d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:NRQ9 ZCor:NRZ9
+n9d.dq: sbend, l = 0.01956
+n9d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:NRX9
+n9f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:NRX9
+n9f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+n9f.fq: sbend, l = 0.01986
+n9f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:NRX9
+nel1: quadrupole, l = 1.06, k1 = -0.696096227564273! GCor:NEG1
+nel2: quadrupole, l = 1.308, k1 = 0.348190330137063! GCor:NEG2
+nel3: quadrupole, l = 1.287, k1 = -0.237665234454877! GCor:NEG3
+nel4: quadrupole, l = 1.287, k1 = 0.17929490761774! GCor:NEG4
+nel5: quadrupole, l = 1.287, k1 = -0.298525942879549! GCor:NEG5
+nem1.b1: sbend, l = 1.832, angle = 0.0664858448, k1 = -0.001839! XCor:NEX1
+nem1.b2: sbend, l = 0.4212, angle = 0.00649549368, k1 = -0.000835
+nem1.o0: drift, l = 0.03586
+nem2.b1: sbend, l = 1.832, angle = 0.0664858448, k1 = -0.001839! XCor:NEX2
+nem2.b2: sbend, l = 0.4212, angle = 0.00649549368, k1 = -0.000835
+nem2.o0: drift, l = 0.03586
+nem3.b1: sbend, l = 1.03228, angle = 0.084355547356, k1 = -0.001683
+nem3.b2: sbend, l = 0.12137, angle = 0.003697597735, k1 = -0.013103
+neo2: quadrupole, l = 0.17
+neoq: quadrupole, l = 0.08! QCor:NEOQ
+nep0: marker
+nep1: marker
+nep3: marker
+nep4: marker
+nep5: marker
+neq2: quadrupole, l = 0.17! QCor:NEQ2
+neq3: quadrupole, l = 0.17! QCor:NEQ3
+nes1: sextupole, l = 0.17, k2 = -1.62167
+nes2: sextupole, l = 0.17, k2 = 0.810835
+nes3: drift, l = 0.17
+nex3: kicker, l = 0.14! XCor:NEX3
+nex5: kicker, l = 0.14! XCor:NEX5
+nexz: kicker, l = 0.12! XCor:NEX0 ZCor:NEZ1
+nez2: kicker, l = 0.14! ZCor:NEZ2
+nez3: kicker, l = 0.14! ZCor:NEZ3
+nezm.b1: sbend, l = 0.2164575! XCor:NEX4
+nezm.b2: sbend, l = 0.432907! XCor:NEX4
+nezm.b3: sbend, l = 0.2164575! XCor:NEX4
+nezm.om: drift, l = 0.0735427
+nezm.op: drift, l = 0.0435462
+nil1: quadrupole, l = 0.288, k1 = 0.910568497625036! GCor:NIG1
+nil2: quadrupole, l = 0.288, k1 = -0.877233065894388! GCor:NIG2
+nil3: quadrupole, l = 0.288, k1 = 0.993036880607497! GCor:NIG3
+nil4: quadrupole, l = 0.288, k1 = -0.870910635965678! GCor:NIG4
+nim1.b1: sbend, l = 0.66236, angle = 0.038197837548, k1 = -0.00558199! XCor:NIX1
+nim1.b2: sbend, l = 0.26, angle = 0.010444434, k1 = 0.010904! XCor:NIX1
+nim1.b3: sbend, l = 0.66236, angle = 0.038197837548, k1 = -0.00558199! XCor:NIX1
+nim2.b1: sbend, l = 0.66236, angle = 0.038197837548, k1 = -0.00558199! XCor:NIX2
+nim2.b2: sbend, l = 0.26, angle = 0.009352226, k1 = 0.00976199999999999! XCor:NIX2
+nim2.b3: sbend, l = 0.66236, angle = 0.038197837548, k1 = -0.00558199! XCor:NIX2
+nim3.b1: sbend, l = 0.66236, angle = 0.034202018376, k1 = -0.004996! XCor:NIX3
+nim3.b2: sbend, l = 0.26, angle = 0.009352226, k1 = 0.00976199999999999! XCor:NIX3
+nim3.b3: sbend, l = 0.66236, angle = 0.034202018376, k1 = -0.004996! XCor:NIX3
+nim4.b1: sbend, l = 0.66236, angle = 0.03123755996, k1 = -0.00456499! XCor:NIX4
+nim4.b2: sbend, l = 0.26, angle = 0.008543288, k1 = 0.00891899999999999! XCor:NIX4
+nim4.b3: sbend, l = 0.66236, angle = 0.03123755996, k1 = -0.00456499! XCor:NIX4
+nip1: marker
+nip3: marker
+niw: drift, l = 1.54064
+niz1: kicker, l = 0.17! ZCor:NIZ1
+nrp1: marker
+nrp10: marker
+nrp11: marker
+nrp12: marker
+nrp13: marker
+nrp14: marker
+nrp15: marker
+nrp16: marker
+nrp17: marker
+nrp2: marker
+nrp3: marker
+nrp4: marker
+nrp5: marker
+nrp6: marker
+nrp7: marker
+nrp8: marker
+nrp9: marker
+ntl1: quadrupole, l = 1.287, k1 = 0.237113259724104! GCor:NTG1
+ntl2: quadrupole, l = 1.287, k1 = -0.276449644515637! GCor:NTG2
+ntl3: quadrupole, l = 0.6435, k1 = 0.357969643044532! GCor:NTG3
+ntl4: quadrupole, l = 1.287, k1 = -0.315566960158117! GCor:NTG4
+ntp0: marker
+ntp2: marker
+ntp4: marker
+nts0: sextupole, l = 0.165
+ntw.w0: sbend, l = 0.1725, angle = -0.00976517325 * factor, k1 = 1.00403* factor, e1 = -0.004882586625* factor, e2 = -0.004882586625* factor
+ntw.wm: sbend, l = 0.325, angle = 0.0195303225* factor, k1 = -1.00403* factor, e1 = 0.00976516125* factor, e2 = 0.00976516125* factor
+ntw.wp: sbend, l = 0.325, angle = -0.0195303225* factor, k1 = 1.00403* factor, e1 = -0.00976516125* factor, e2 = -0.00976516125* factor
+ntx1: kicker, l = 0.14! XCor:NTX1
+ntx2: kicker, l = 0.14! XCor:NTX2
+ntz1: kicker, l = 0.14! ZCor:NTZ1
+ntz2: kicker, l = 0.14
+ntz3: kicker, l = 0.14! ZCor:NTZ3
+res1: drift, l = 0.96
+res2: drift, l = 0.96
+res3: rfcavity, l = 0.96, harmon = 222, voltage = 2 * 1e6, rf_frequency = (222 * frf), phi0 = 0.5 !LAG=0.4855443335660359;
+res4: rfcavity, l = 0.96, harmon = 222, voltage = 2 * 1e6, rf_frequency = (222 * frf), phi0 = 0.5 !LAG=0.4855443335660359;
+res5: drift, l = 0.96
+res6: drift, l = 0.96
+s10d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX10
+s10d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ10 ZCor:SRZ10
+s10d.dq: sbend, l = 0.01956
+s10d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX10
+s10f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX10
+s10f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s10f.fq: sbend, l = 0.01986
+s10f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX10
+s11d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX11
+s11d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ11 ZCor:SRZ11
+s11d.dq: sbend, l = 0.01956
+s11d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX11
+s11f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX11
+s11f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s11f.fq: sbend, l = 0.01986
+s11f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX11
+s12d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX12
+s12d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ12 ZCor:SRZ12
+s12d.dq: sbend, l = 0.01956
+s12d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX12
+s12f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX12
+s12f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s12f.fq: sbend, l = 0.01986
+s12f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX12
+s13d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX13
+s13d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ13 ZCor:SRZ13
+s13d.dq: sbend, l = 0.01956
+s13d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX13
+s13f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX13
+s13f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s13f.fq: sbend, l = 0.01986
+s13f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX13
+s14d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX14
+s14d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ14 ZCor:SRZ14
+s14d.dq: sbend, l = 0.01956
+s14d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX14
+s14f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX14
+s14f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s14f.fq: sbend, l = 0.01986
+s14f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX14
+s15d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX15
+s15d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ15 ZCor:SRZ15
+s15d.dq: sbend, l = 0.01956
+s15d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX15
+s15f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX15
+s15f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s15f.fq: sbend, l = 0.01986
+s15f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX15
+s16d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX16
+s16d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ16 ZCor:SRZ16
+s16d.dq: sbend, l = 0.01956
+s16d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX16
+s16f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX16
+s16f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s16f.fq: sbend, l = 0.01986
+s16f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX16
+s17f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX17
+s17f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s17f.fq: sbend, l = 0.01986
+s17f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX17
+s1d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX1
+s1d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ1 ZCor:SRZ1
+s1d.dq: sbend, l = 0.01956
+s1d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX1
+s1f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX0
+s1f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s1f.fq: sbend, l = 0.01986
+s1f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX0
+s2d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX2
+s2d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ2 ZCor:SRZ2
+s2d.dq: sbend, l = 0.01956
+s2d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX2
+s2f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX2
+s2f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s2f.fq: sbend, l = 0.01986
+s2f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX2
+s3d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX3
+s3d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ3 ZCor:SRZ3
+s3d.dq: sbend, l = 0.01956
+s3d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX3
+s3f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX3
+s3f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s3f.fq: sbend, l = 0.01986
+s3f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX3
+s4d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX4
+s4d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ4 ZCor:SRZ4
+s4d.dq: sbend, l = 0.01956
+s4d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX4
+s4f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX4
+s4f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s4f.fq: sbend, l = 0.01986
+s4f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX4
+s5d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX5
+s5d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ5 ZCor:SRZ5
+s5d.dq: sbend, l = 0.01956
+s5d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX5
+s5f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX5
+s5f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s5f.fq: sbend, l = 0.01986
+s5f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX5
+s6d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX6
+s6d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ6 ZCor:SRZ6
+s6d.dq: sbend, l = 0.01956
+s6d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX6
+s6f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX6
+s6f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s6f.fq: sbend, l = 0.01986
+s6f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX6
+s7d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX7
+s7d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ7 ZCor:SRZ7
+s7d.dq: sbend, l = 0.01956
+s7d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX7
+s7f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX7
+s7f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s7f.fq: sbend, l = 0.01986
+s7f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX7
+s8d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX8
+s8d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127
+s8d.dq: sbend, l = 0.01956
+s8d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX8
+s8f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX8
+s8f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625! QCor:SRQ8 ZCor:SRZ8
+s8f.fq: sbend, l = 0.01986
+s8f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX8
+s9d.bb: sbend, l = 1.89748, angle = 0.054915348176! XCor:SRX9
+s9d.d7: sbend, l = 1.11387, angle = 0.014814359613, k1 = -0.245194, k2 = -0.136204308797127! QCor:SRQ9 ZCor:SRZ9
+s9d.dq: sbend, l = 0.01956
+s9d.ds: sbend, l = 0.342, angle = 0.007692435, k2 = -3.0057485380117! XCor:SRX9
+s9f.bb: sbend, l = 1.89695, angle = 0.05490038873! XCor:SRX9
+s9f.f7: sbend, l = 1.11309, angle = 0.01666963584, k1 = 0.278605, k2 = 0.0900098831985625
+s9f.fq: sbend, l = 0.01986
+s9f.fs: sbend, l = 0.342, angle = 0.007692435, k2 = 1.98261403508772! XCor:SRX9
+sel1: quadrupole, l = 1.06, k1 = -0.696096227564273! GCor:SEG1
+sel2: quadrupole, l = 1.308, k1 = 0.348190330137063! GCor:SEG2
+sel3: quadrupole, l = 1.287, k1 = -0.237665234454877! GCor:SEG3
+sel4: quadrupole, l = 1.287, k1 = 0.17929490761774! GCor:SEG4
+sel5: quadrupole, l = 1.287, k1 = -0.298525942879549! GCor:SEG5
+sem1.b1: sbend, l = 1.832, angle = 0.0664858448, k1 = -0.001839! XCor:SEX1
+sem1.b2: sbend, l = 0.4212, angle = 0.00649549368, k1 = -0.000835
+sem1.o0: drift, l = 0.03586
+sem2.b1: sbend, l = 1.832, angle = 0.0664858448, k1 = -0.001839! XCor:SEX2
+sem2.b2: sbend, l = 0.4212, angle = 0.00649549368, k1 = -0.000835
+sem2.o0: drift, l = 0.03586
+sem3.b1: sbend, l = 1.03228, angle = 0.084355547356, k1 = -0.001683
+sem3.b2: sbend, l = 0.12137, angle = 0.003697597735, k1 = -0.013103
+seo2: quadrupole, l = 0.17
+seoq: quadrupole, l = 0.08! QCor:SEOQ
+sep0: marker
+sep1: marker
+sep3: marker
+sep4: marker
+sep5: marker
+seq2: quadrupole, l = 0.17! QCor:SEQ2
+seq3: quadrupole, l = 0.17! QCor:SEQ3 
+ses1: sextupole, l = 0.17, k2 = -1.62167
+ses2: sextupole, l = 0.17, k2 = 0.810835
+ses3: drift, l = 0.17
+sex3: kicker, l = 0.14! XCor:SEX3
+sex5: kicker, l = 0.14! XCor:SEX5
+sexz: kicker, l = 0.12! XCor:SEX0 ZCor:SEZ1
+sez2: kicker, l = 0.14! ZCor:SEZ2
+sez3: kicker, l = 0.14! ZCor:SEZ3
+sezm.b1: sbend, l = 0.2164575! XCor:SEX4
+sezm.b2: sbend, l = 0.432907! XCor:SEX4
+sezm.b3: sbend, l = 0.2164575! XCor:SEX4
+sezm.om: drift, l = 0.0735427
+sezm.op: drift, l = 0.0435462
+sil1: quadrupole, l = 0.288, k1 = 0.910568497625036! GCor:SIG1
+sil2: quadrupole, l = 0.288, k1 = -0.877233065894388! GCor:SIG2
+sil3: quadrupole, l = 0.288, k1 = 0.993036880607497! GCor:SIG3
+sil4: quadrupole, l = 0.288, k1 = -0.870910635965678! GCor:SIG4
+sim1.b1: sbend, l = 0.66236, angle = 0.038197837548, k1 = -0.00558199! XCor:SIX1
+sim1.b2: sbend, l = 0.26, angle = 0.010444434, k1 = 0.010904! XCor:SIX1
+sim1.b3: sbend, l = 0.66236, angle = 0.038197837548, k1 = -0.00558199! XCor:SIX1
+sim2.b1: sbend, l = 0.66236, angle = 0.038197837548, k1 = -0.00558199! XCor:SIX2
+sim2.b2: sbend, l = 0.26, angle = 0.009352226, k1 = 0.00976199999999999! XCor:SIX2
+sim2.b3: sbend, l = 0.66236, angle = 0.038197837548, k1 = -0.00558199! XCor:SIX2
+sim3.b1: sbend, l = 0.66236, angle = 0.034202018376, k1 = -0.004996! XCor:SIX3
+sim3.b2: sbend, l = 0.26, angle = 0.009352226, k1 = 0.00976199999999999! XCor:SIX3
+sim3.b3: sbend, l = 0.66236, angle = 0.034202018376, k1 = -0.004996! XCor:SIX3
+sim4.b1: sbend, l = 0.66236, angle = 0.03123755996, k1 = -0.00456499! XCor:SIX4
+sim4.b2: sbend, l = 0.26, angle = 0.008543288, k1 = 0.00891899999999999! XCor:SIX4
+sim4.b3: sbend, l = 0.66236, angle = 0.03123755996, k1 = -0.00456499! XCor:SIX4
+sip1: marker
+sip2: marker
+siz1: kicker, l = 0.17! ZCor:SIZ1
+sold: solenoid, l = 0.6
+srp1: marker
+srp10: marker
+srp11: marker
+srp12: marker
+srp13: marker
+srp14: marker
+srp15: marker
+srp16: marker
+srp17: marker
+srp2: marker
+srp3: marker
+srp4: marker
+srp5: marker
+srp6: marker
+srp7: marker
+srp8: marker
+srp9: marker
+stl1: quadrupole, l = 1.287, k1 = 0.237113259724104! GCor:STG1
+stl2: quadrupole, l = 1.287, k1 = -0.276449644515637! GCor:STG2
+stl3: quadrupole, l = 0.6435, k1 = 0.357969643044532! GCor:STG3
+stl4: quadrupole, l = 1.287, k1 = -0.315566960158117! GCor:STG4
+stp0: marker
+stp2: marker
+stp4: marker
+stw.w0: sbend, l = 0.1725, angle = -0.00976517325 * factor, k1 = 1.00403* factor, e1 = -0.004882586625* factor, e2 = -0.004882586625* factor
+stw.wm: sbend, l = 0.325, angle = 0.0195303225* factor, k1 = -1.00403* factor, e1 = 0.00976516125* factor, e2 = 0.00976516125* factor
+stw.wp: sbend, l = 0.325, angle = -0.0195303225* factor, k1 = 1.00403* factor, e1 = -0.00976516125* factor, e2 = -0.00976516125* factor
+stx1: kicker, l = 0.14! XCor:STX1
+stx2: kicker, l = 0.14
+stz0: kicker, l = 0.14! ZCor:STZ0
+stz1: kicker, l = 0.14! ZCor:STZ1
+stz2: kicker, l = 0.14! ZCor:STZ2
+stz3: kicker, l = 0.14! ZCor:STZ3
+o0: drift, l = 0.1
+o1: drift, l = 0.201684
+o2: drift, l = 0.100565
+oe02: drift, l = 0.13
+oe03: drift, l = 0.102
+oe04: drift, l = 0.128
+oe05: drift, l = 0.05
+oe06: drift, l = 0.12
+oe07: drift, l = 0.286
+oe08: drift, l = 0.391
+oe09: drift, l = 0.1378
+oe11: drift, l = 0.69
+oe12: drift, l = 1.021
+oe14: drift, l = 3.9582
+oe15: drift, l = 0.65
+oe16: drift, l = 1.02
+oe17: drift, l = 0.14
+oe18: drift, l = 0.21
+oe19: drift, l = 0.63
+oe20: drift, l = 1.87
+oe21: drift, l = 0.59
+oe22: drift, l = 0.1667
+oe23: drift, l = 0.1263
+oe24: drift, l = 0.1966
+oe25: drift, l = 0.17
+oe26: drift, l = 0.09
+oe27: drift, l = 0.24
+oe28: drift, l = 0.11
+oe29: drift, l = 0.55
+oe30: drift, l = 0.025016
+oi00: drift, l = 0.417875
+oi01: drift, l = 1.01864
+oi02: drift, l = 0.07
+oi03: drift, l = 2.01364
+oi04: drift, l = 0.14182
+oi05: drift, l = 0.28364
+oi06: drift, l = 0.24764
+oi07: drift, l = 0.17
+oi08: drift, l = 0.1
+oi09: drift, l = 0.076
+oi10: drift, l = 0.31
+oi12: drift, l = 1.06064
+oi13: drift, l = 0.35864
+oi14: drift, l = 0.121479
+ot02: drift, l = 0.09
+ot03: drift, l = 0.34
+ot04: drift, l = 0.263
+ot05: drift, l = 2.6905
+ot06: drift, l = 0.27
+ot07: drift, l = 0.07
+ot08: drift, l = 0.2
+ot09: drift, l = 0.27
+ot10: drift, l = 0.27
+ot11: drift, l = 0.71
+ot12: drift, l = 0.263
+ot13: drift, l = 0.32
+ot14: drift, l = 0.56
+ot15: drift, l = 0.07
+ot16: drift, l = 0.4764
+ot17: drift, l = 0.7166
+otn0: drift, l = 0.08
+otn1: drift, l = 2.18525
+ots0: drift, l = 0.13
+ots1: drift, l = 2.16025
+
+vepp4m: LINE=(CTX, oTS0, STZ0, oTS1, STZ1, oT02, STP0, oT03, STL1, oT04, STL2, oT05,RES4, oT06, STX1, oT07, STP2, oT08,
+          RES5, oT09, STZ2, oT10, RES6, oT11, STL3, IV4P, STL3, oT12,STL4, oT13, STP4, oT14, STZ3, oT15, STX2, oT16, STW.W0,
+          STW.WM, STW.WP, STW.WM, STW.W0,oT17, o2, SRP1, o0, S1F.BB, S1F.FS, S1F.FQ, S1F.F7, o1, S1D.BB, S1D.DS, S1D.DQ, S1D.D7,
+          o2,SRP2, o0, S2F.BB, S2F.FS, S2F.FQ, S2F.F7, o1, S2D.BB, S2D.DS, S2D.DQ, S2D.D7, o2, SRP3, o0,S3F.BB, S3F.FS, S3F.FQ,
+          S3F.F7, o1, S3D.BB, S3D.DS, S3D.DQ, S3D.D7, o2, SRP4, o0, S4F.BB,S4F.FS, S4F.FQ, S4F.F7, o1, S4D.BB, S4D.DS, S4D.DQ,
+          S4D.D7, o2, SRP5, o0, S5F.BB, S5F.FS,S5F.FQ, S5F.F7, o1, S5D.BB, S5D.DS, S5D.DQ, S5D.D7, o2, SRP6, o0, S6F.BB, S6F.FS,
+          S6F.FQ,S6F.F7, o1, S6D.BB, S6D.DS, S6D.DQ, S6D.D7, o2, SRP7, o0, S7F.BB, S7F.FS, S7F.FQ, S7F.F7, o1,S7D.BB, S7D.DS,
+          S7D.DQ, S7D.D7, o2, SRP8, o0, S8F.BB, S8F.FS, S8F.FQ, S8F.F7, o1, S8D.BB,S8D.DS, S8D.DQ, S8D.D7, o2, SRP9, o0, S9F.BB,
+          S9F.FS, S9F.FQ, S9F.F7, o1, S9D.BB, S9D.DS,S9D.DQ, S9D.D7, o2, oI00, SIM1.B1, SIM1.B2, SIM1.B3, oI01, SIP1, oI02, SIL1,
+          oI03, SIM2.B1,SIM2.B2, SIM2.B3, oI04, SIP2, oI04, SIL2, oI05, SIM3.B1, SIM3.B2, SIM3.B3, oI06, oI07, oI08,oI09, SIL3,
+          oI10, SIZ1, oI12, SIM4.B1, SIM4.B2, SIM4.B3, oI13, SIL4, oI14, o2, SRP10, o0,S10F.BB, S10F.FS, S10F.FQ, S10F.F7, o1,
+          S10D.BB, S10D.DS, S10D.DQ, S10D.D7, o2, SRP11, o0,S11F.BB, S11F.FS, S11F.FQ, S11F.F7, o1, S11D.BB, S11D.DS, S11D.DQ,
+          S11D.D7, o2, SRP12, o0,S12F.BB, S12F.FS, S12F.FQ, S12F.F7, o1, S12D.BB, S12D.DS, S12D.DQ, S12D.D7, o2, SRP13, o0,
+         S13F.BB, S13F.FS, S13F.FQ, S13F.F7, o1, S13D.BB, S13D.DS, S13D.DQ, S13D.D7, o2, SRP14, o0,S14F.BB, S14F.FS, S14F.FQ,
+          S14F.F7, o1, S14D.BB, S14D.DS, S14D.DQ, S14D.D7, o2, SRP15, o0,S15F.BB, S15F.FS, S15F.FQ, S15F.F7, o1, S15D.BB,
+          S15D.DS, S15D.DQ, S15D.D7, o2, SRP16, o0,S16F.BB, S16F.FS, S16F.FQ, S16F.F7, o1, S16D.BB, S16D.DS, S16D.DQ, S16D.D7,
+          o2, SRP17, o0,S17F.BB, S17F.FS, S17F.FQ, S17F.F7, o1, oE30, SEP5, oE29, SES3, oE28, SEQ3, oE27, SEX5, oE26,SEZ3, oE25,
+          SEL5, oE24, SEM3.B1, SEM3.B2, oE23, SEZM.OM, SEZM.B1, SEZM.OP, SEZM.B2,SEZM.OP, SEZM.B3, SEZM.OM, oE22, SEP4, oE21,
+          SEL4, oE20, SEQ2, oE19, SEX3, oE18, SEZ2, oE17,SEO2, oE16, SEL3, oE15, SEP3, oE14, SEM2.B1, SEM2.O0, SEM2.B2, oE12,
+          SEP1, oE11, SEM1.B1,SEM1.O0, SEM1.B2, oE09, SES2, oE08, SEL2, oE07, SEOQ, oE06, SES1, oE05, SEP0, oE04, SEL1, oE03,
+         SEXZ, oE02, SOLD, KEDR, IP, KEDR, SOLD, oE02, NEXZ, oE03, NEL1, oE04, NEP0, oE05, NES1, oE06,NEOQ, oE07, NEL2, oE08,
+          NES2, oE09, NEM1.B2, NEM1.O0, NEM1.B1, oE11, NEP1, oE12, NEM2.B2,NEM2.O0, NEM2.B1, oE14, NEP3, oE15, NEL3, oE16, NEO2,
+          oE17, NEZ2, oE18, NEX3, oE19, NEQ2, oE20,NEL4, oE21, NEP4, oE22, NEZM.OM, NEZM.B3, NEZM.OP, NEZM.B2, NEZM.OP, NEZM.B1,
+         NEZM.OM, oE23, NEM3.B2, NEM3.B1, oE24, NEL5, oE25, NEZ3, oE26, NEX5, oE27, NEQ3, oE28, NES3,oE29, NEP5, oE30, o1,
+          N17F.F7, N17F.FQ, N17F.FS, N17F.BB, o0, NRP17, o2, N16D.D7,N16D.DQ, N16D.DS, N16D.BB, o1, N16F.F7, N16F.FQ, N16F.FS,
+          N16F.BB, o0, NRP16, o2, N15D.D7,N15D.DQ, N15D.DS, N15D.BB, o1, N15F.F7, N15F.FQ, N15F.FS, N15F.BB, o0, NRP15, o2,
+          N14D.D7,N14D.DQ, N14D.DS, N14D.BB, o1, N14F.F7, N14F.FQ, N14F.FS, N14F.BB, o0, NRP14, o2, N13D.D7,N13D.DQ, N13D.DS,
+          N13D.BB, o1, N13F.F7, N13F.FQ, N13F.FS, N13F.BB, o0, NRP13, o2, N12D.D7,N12D.DQ, N12D.DS, N12D.BB, o1, N12F.F7,
+          N12F.FQ, N12F.FS, N12F.BB, o0, NRP12, o2, N11D.D7,N11D.DQ, N11D.DS, N11D.BB, o1, N11F.F7, N11F.FQ, N11F.FS, N11F.BB,
+          o0, NRP11, o2, N10D.D7,N10D.DQ, N10D.DS, N10D.BB, o1, N10F.F7, N10F.FQ, N10F.FS, N10F.BB, o0, NRP10, o2, oI14,NIL4,
+          oI13, NIM4.B3, NIM4.B2, NIM4.B1, NIW, NIL3, oI09, NIP3, oI08, NIZ1, oI06, NIM3.B3,NIM3.B2, NIM3.B1, oI05, NIL2, oI04,
+          oI04, NIM2.B3, NIM2.B2, NIM2.B1, oI03, NIL1, oI02, NIP1,oI01, NIM1.B3, NIM1.B2, NIM1.B1, oI00, o2, N9D.D7, N9D.DQ,
+          N9D.DS, N9D.BB, o1, N9F.F7,N9F.FQ, N9F.FS, N9F.BB, o0, NRP9, o2, N8D.D7, N8D.DQ, N8D.DS, N8D.BB, o1, N8F.F7, N8F.FQ,
+         N8F.FS, N8F.BB, o0, NRP8, o2, N7D.D7, N7D.DQ, N7D.DS, N7D.BB, o1, N7F.F7, N7F.FQ, N7F.FS,N7F.BB, o0, NRP7, o2, N6D.D7,
+          N6D.DQ, N6D.DS, N6D.BB, o1, N6F.F7, N6F.FQ, N6F.FS, N6F.BB, o0,NRP6, o2, N5D.D7, N5D.DQ, N5D.DS, N5D.BB, o1, N5F.F7,
+          N5F.FQ, N5F.FS, N5F.BB, o0, NRP5, o2,N4D.D7, N4D.DQ, N4D.DS, N4D.BB, o1, N4F.F7, N4F.FQ, N4F.FS, N4F.BB, o0, NRP4, o2,
+          N3D.D7,N3D.DQ, N3D.DS, N3D.BB, o1, N3F.F7, N3F.FQ, N3F.FS, N3F.BB, o0, NRP3, o2, N2D.D7, N2D.DQ,N2D.DS, N2D.BB, o1,
+          N2F.F7, N2F.FQ, N2F.FS, N2F.BB, o0, NRP2, o2, N1D.D7, N1D.DQ, N1D.DS,N1D.BB, o1, N1F.F7, N1F.FQ, N1F.FS, N1F.BB, o0,
+          NRP1, o2, oT17, NTW.W0, NTW.WM, NTW.WP,NTW.WM, NTW.W0, oT16, NTX2, oT15, NTZ3, oT14, NTP4, oT13, NTL4, oT12, NTL3,
+          IV4E, NTL3, oT11,RES1, oT10, NTZ2, oT09, RES2, oT08, NTP2, oT07, NTX1, oT06, RES3, oT05, NTL2, oT04, NTL1, oT03,NTP0,
+          oT02, NTZ1, oTN1, NTS0, oTN0, CTX)
+
+use, vepp4m

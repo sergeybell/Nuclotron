@@ -1,0 +1,99 @@
+&tao_start
+  n_universes = 1
+  plot_file = 'tao_plot.init' 
+  startup_file = "tao.startup"
+/
+
+&tao_design_lattice
+  design_lattice(1)%file='vepp4m-general.bmad'
+/
+
+&tao_params
+  global%prompt_color = "CYAN"
+  global%n_opti_loops = 10
+  global%n_opti_cycles = 30
+  global%plot_on = T
+  global%track_type = 'single'
+  global%beam_timer_on = F
+  bmad_com%spin_tracking_on = F
+  bmad_com%radiation_damping_on = T
+  bmad_com%radiation_fluctuations_on = F
+  bmad_com%radiation_zero_average = F 
+/
+
+!#######################################################
+&tao_d2_data
+  d2_data%name = "twiss"
+  n_d1_data = 2
+/
+
+&tao_d1_data
+  ix_d1_data = 1
+  d1_data%name = "a"
+  datum(1) = "beta.a"		""		""		"srp1"		"target"		4.87		1e1
+  datum(2) = "alpha.a"		""		""		"srp1"		"target"		-0.82		1e3
+  datum(3) = "beta.a"		""		""		"nrp1"		"target"		4.87		1e1
+  datum(4) = "alpha.a"		""		""		"nrp1"		"target"		0.82		1e3
+/
+
+&tao_d1_data
+  ix_d1_data = 2
+  d1_data%name = "b"
+  datum(1) = "beta.b"		""		""		"srp1"		"target"		13.24		1e1
+  datum(2) = "alpha.b"		""		""		"srp1"		"target"		1.84		1e3
+  datum(3) = "beta.b"		""		""		"nrp1"		"target"		13.24		1e1
+  datum(4) = "alpha.b"		""		""		"nrp1"		"target"		-1.84		1e3
+
+/
+
+!#######################################################
+&tao_d2_data
+  d2_data%name = "eta"
+  n_d1_data = 2
+/
+
+&tao_d1_data
+  ix_d1_data = 1
+  d1_data%name = "x"
+  datum(1) = "eta.x" "" "" "srp1" "target" 0.81 1e1
+/
+
+&tao_d1_data
+  ix_d1_data = 2
+  d1_data%name = "x"
+  datum(1) = "eta.x" "" "" "srp1" "target" 0.81 1e1
+/
+!#######################################################
+&tao_d2_data
+  d2_data%name = "tune"
+  n_d1_data = 2
+/
+
+&tao_d1_data
+  ix_d1_data = 1
+  d1_data%name = "x"
+  datum(1) = "tune.a" "" "" "" "target" 53.651 1e1
+  datum(1)%data_source = "lat"
+/
+
+&tao_d1_data
+  ix_d1_data = 2
+  d1_data%name = "z"
+  datum(1) = "tune.b" "" "" "" "target" 47.615 1e1
+  datum(1)%data_source = "lat" 
+/
+
+&tao_var
+  v1_var%name = 'quad_corr'
+  var(1:)%ele_name = "NTL1", "STL1", "NTL2", "STL2", "NTL3", "STL3", "NTL4", "STL4", "N1F.F7", "S1F.F7", "N1D.D7", "S1D.D7"
+  default_step = 1e-6
+  default_attribute = 'k1'
+  default_merit_type = 'limit'
+  default_low_lim = -1
+  default_high_lim = 1
+  default_weight = 1
+  ix_min_var = 1
+  default_key_delta = 1e-6
+  default_key_bound = T
+/
+

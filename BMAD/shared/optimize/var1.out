@@ -1,0 +1,69 @@
+ NTL1[K1] =  2.43258738743028530E-001
+ STL1[K1] =  2.43417780885972601E-001
+ NTL2[K1] = -2.80856125849617555E-001
+ STL2[K1] = -2.80902291864419063E-001
+ NTL3[K1] =  3.58396051839239338E-001
+ STL3[K1] =  3.58446594517834949E-001
+ NTL4[K1] = -3.14891127476487342E-001
+ STL4[K1] = -3.14820957718916272E-001
+ N1F.F7[K1] =  2.78950051142308586E-001
+ S1F.F7[K1] =  2.78860305287416343E-001
+ N1D.D7[K1] = -2.44493718495688378E-001
+ S1D.D7[K1] = -2.44620279219582126E-001
+ 
+ end_file
+ 
+ 
+ ! Top 10
+ 
+ Constraints                   Ref_Ele    Start_Ele   Ele/S    Meas-or-Lim    Model       Merit      Max_Loc
+ twiss.b[3]  beta.b <target>                         NRP1       1.3240E+01   1.3251E+01  1.120E-03
+ twiss.b[1]  beta.b <target>                         SRP1       1.3240E+01   1.3250E+01  1.029E-03
+ twiss.b[2]  alpha.b <target>                        SRP1       1.8400E+00   1.8392E+00  5.633E-04
+ twiss.b[4]  alpha.b <target>                        NRP1      -1.8400E+00  -1.8393E+00  5.061E-04
+ twiss.a[3]  beta.a <target>                         NRP1       4.8700E+00   4.8629E+00  4.976E-04
+ eta.x[1]    eta.x <target>                          SRP1       8.1000E-01   8.0353E-01  4.192E-04
+ eta.x[1]    eta.x <target>                          SRP1       8.1000E-01   8.0353E-01  4.192E-04
+ twiss.a[1]  beta.a <target>                         SRP1       4.8700E+00   4.8641E+00  3.471E-04
+ twiss.a[4]  alpha.a <target>                        NRP1       8.2000E-01   8.2033E-01  1.118E-04
+ twiss.a[2]  alpha.a <target>                        SRP1      -8.2000E-01  -8.2031E-01  9.870E-05
+ Constraints                   Ref_Ele    Start_Ele   Ele/S    Meas-or-Lim    Model       Merit      Max_Loc
+ 
+  figure of merit: 5.113917E-03
+ 
+ List of non-zero contributors to the Merit Function:
+ Name                                          Merit           Sigma [= sqrt(Chi^2/N)]
+ twiss.b                                       3.2183E-03      7.3478E-03
+ twiss.a                                       1.0552E-03      4.6012E-03
+ eta.x                                         8.3850E-04      6.4749E-03
+ tune.x                                        1.6316E-06      4.0394E-04
+ tune.z                                        3.1159E-07      1.7652E-04
+ 
+ Constraints                      Ref_Ele    Start_Ele   Ele/S    Meas-or-Lim    Model       Merit      Max_Loc
+ twiss.a[1]     beta.a <target>                         SRP1       4.8700E+00   4.8641E+00  3.471E-04
+ twiss.a[2]     alpha.a <target>                        SRP1      -8.2000E-01  -8.2031E-01  9.870E-05
+ twiss.a[3]     beta.a <target>                         NRP1       4.8700E+00   4.8629E+00  4.976E-04
+ twiss.a[4]     alpha.a <target>                        NRP1       8.2000E-01   8.2033E-01  1.118E-04
+ twiss.b[1]     beta.b <target>                         SRP1       1.3240E+01   1.3250E+01  1.029E-03
+ twiss.b[2]     alpha.b <target>                        SRP1       1.8400E+00   1.8392E+00  5.633E-04
+ twiss.b[3]     beta.b <target>                         NRP1       1.3240E+01   1.3251E+01  1.120E-03
+ twiss.b[4]     alpha.b <target>                        NRP1      -1.8400E+00  -1.8393E+00  5.061E-04
+ eta.x[1]       eta.x <target>                          SRP1       8.1000E-01   8.0353E-01  4.192E-04
+ eta.x[1]       eta.x <target>                          SRP1       8.1000E-01   8.0353E-01  4.192E-04
+ tune.x[1]      tune.a <target>                                    5.3651E+01   5.3651E+01  1.632E-06
+ tune.z[1]      tune.b <target>                                    4.7615E+01   4.7615E+01  3.116E-07
+ quad_corr[1]   NTL1[K1]                                363.00     1.0000E+00   2.4326E-01  0.000E+00
+ quad_corr[2]   STL1[K1]                                4.36       1.0000E+00   2.4342E-01  0.000E+00
+ quad_corr[3]   NTL2[K1]                                361.45    -1.0000E+00  -2.8086E-01  0.000E+00
+ quad_corr[4]   STL2[K1]                                5.91      -1.0000E+00  -2.8090E-01  0.000E+00
+ quad_corr[5]   NTL3[K1]                                351.88     1.0000E+00   3.5840E-01  0.000E+00
+ quad_corr[6]   STL3[K1]                                14.19      1.0000E+00   3.5845E-01  0.000E+00
+ quad_corr[7]   NTL4[K1]                                350.98    -1.0000E+00  -3.1489E-01  0.000E+00
+ quad_corr[8]   STL4[K1]                                16.38     -1.0000E+00  -3.1482E-01  0.000E+00
+ quad_corr[9]   N1F.F7[K1]                              343.49     1.0000E+00   2.7895E-01  0.000E+00
+ quad_corr[10]  S1F.F7[K1]                              23.70      1.0000E+00   2.7886E-01  0.000E+00
+ quad_corr[11]  N1D.D7[K1]                              339.91    -1.0000E+00  -2.4449E-01  0.000E+00
+ quad_corr[12]  S1D.D7[K1]                              27.27     -1.0000E+00  -2.4462E-01  0.000E+00
+ Constraints                      Ref_Ele    Start_Ele   Ele/S    Meas-or-Lim    Model       Merit      Max_Loc
+ 
+  figure of merit: 5.113917E-03
