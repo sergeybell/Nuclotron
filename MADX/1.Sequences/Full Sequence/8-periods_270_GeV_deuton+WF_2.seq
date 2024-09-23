@@ -1,0 +1,62 @@
+! TITLE
+! ----------------------------------------------------------------------------
+! 8-periods_270_GeV_deuton+WF
+! Converted by OptimX to MAD8 format.
+! Thu Sep 19 14:29:36 2024
+
+! ----------------------------------------------------------------------------
+!  Kinetic energy=270 MeV, mass=1862.99 MeV
+!  BetaX=1.28268 m,  AlphaX=0.588816,  BetaY=4.46223 m,  AlphaY=-1.49268 
+!  DispX=-0.000267165 m,  DispPX=-0.000347862,  DispY=0 m,  DispPY=0 
+
+OPTION, -INTER, -ECHO
+ASSIGN, PRINT="line_out.dat"
+ASSIGN, ECHO="line_echo.txt"
+
+BM: SBEND,  L=1.78931916,  ANGLE=0.1308996937
+O1: DRIFT, L=3.35 
+O3: DRIFT, L=0.09 
+O4: DRIFT, L=0.43 
+O5: DRIFT, L=0.13 
+QF: QUADRUPOLE,  L=0.2,  K1=1.722839178
+QD: QUADRUPOLE,  L=0.2,  K1=-1.696819162
+QF1: QUADRUPOLE,  L=0.2,  K1=1.2991464
+QD1: QUADRUPOLE,  L=0.2,  K1=-1.154647904
+SF1: SEXTUPOLE, L=0.3, K2=0
+SF2: SEXTUPOLE, L=0.3, K2=0
+SD: SEXTUPOLE, L=0.3, K2=0
+RA: DRIFT, L=3.35 
+
+MACHINE: LINE=(QD, QD, O3, BM, O5, SF2, QF, QF, O3, BM, O5, SD, QD, QD,  &
+O3, BM, O5, SF1, QF, QF, O3, BM, O5, SD, QD, QD, O3, BM, O5, SF2, QF, QF,  &
+O3, BM, O4, QD, QD, RA, QF1, QF1, O1, QD1, QD1, O1, QF1, QF1, RA, QD, QD,  &
+O3, BM, O5, SF2, QF, QF, O3, BM, O5, SD, QD, QD, O3, BM, O5, SF1, QF, QF,  &
+O3, BM, O5, SD, QD, QD, O3, BM, O5, SF2, QF, QF, O3, BM, O4, QD, QD, RA,  &
+QF1, QF1, O1, QD1, QD1, O1, QF1, QF1, RA)
+
+USE, machine
+! ---------------------------------------------------------------------------------
+! Set all print flags.
+! ---------------------------------------------------------------------------------
+SELECT, FLAG=TWISS, FULL
+! ---------------------------------------------------------------------------------
+! Generate TWISS table.
+! ---------------------------------------------------------------------------------
+
+TWISS, ENERGY=2.132988122, COUPLE, BETX=1.28268, ALFX=0.588816, &
+     BETY=4.46223, ALFY=-1.49268, &
+     DX=-0.000267165, DPX=-0.000347862, &
+     DY=0, DPY=0, TAPE=line.twiss 
+! ---------------------------------------------------------------------------------
+! Plot the uncoupled lattice functions.
+! ---------------------------------------------------------------------------------
+PLOT, HAXIS=S, VAXIS1=BETX,BETY, VAXIS2=DX,DY
+! ---------------------------------------------------------------------------------
+! Generate ENVELOPE table (sigma matrix) 
+! ---------------------------------------------------------------------------------
+ENVELOPE, SAVE=ENVELOPE
+! ---------------------------------------------------------------------------------
+! Generate SURVEY table (elements position & orientation in global coordinates).
+! ---------------------------------------------------------------------------------
+SURVEY, SAVE=SURVEY
+STOP

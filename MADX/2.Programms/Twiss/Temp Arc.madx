@@ -1,14 +1,18 @@
 CHDIR, DIR = "/Users/Bell/GIT_REPOS/NUCLOTRON/MADX/1.Sequences/Full Sequence/";
 !CALL FILE = "Nuclotron 4GeV deutron 3FODO";
 !CALL FILE = "Nuclotron+kicker";
-CALL FILE = "8-periods_270_GeV_deuton+WF.seq";
+!CALL FILE = "8-periods_270_GeV_deuton+WF.seq";
+CALL FILE = "var1.seq";
 
 TITLE, "Nuclotron Modernization";
 
 !beam, MASS=1.862988122,CHARGE=1, ENERGY=9.862988122,
 !      EX=2e-05, EY=2e-05, SIGE=0.001;
 
-beam, MASS=1.862988122,CHARGE=1, ENERGY=2.132988122,
+!beam, MASS=1.862988122,CHARGE=1, ENERGY=2.132988122,
+!      EX=2e-05, EY=2e-05, SIGE=0.001;
+
+beam, MASS=1.862988122,CHARGE=1, ENERGY=7.607988122,
       EX=2e-05, EY=2e-05, SIGE=0.001;
 
 USE, PERIOD = MACHINE;

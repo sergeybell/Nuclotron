@@ -108,8 +108,8 @@
    9858     ENDFUNCTION;
    9859   FUNCTION VEGAUSS MEAN SIGMA NUM PATH;
    9860     VARIABLE VAL 1;
-   9861     OS 'analysis/gauss.py '&ST(MEAN)&' '&ST(SIGMA)&SF(NUM,'(I10)')&' '
-                  &PATH&'.in'; %SF:  285
+   9861     OS 'python gauss.py '&ST(MEAN)&' '&ST(SIGMA)&SF(NUM,'(I10)')&' '&P
+                  ATH&'.in'; %SF:  285
    9862     OPENF 100500 PATH&'.in' 'OLD';
    9863     READ 100500 VAL;
    9864     WHILE ST(VAL)#'';
