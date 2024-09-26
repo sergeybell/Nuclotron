@@ -75,7 +75,7 @@ PROCEDURE OPTIMIZE_TILT SEXTGx1 SEXTGy1 SEXTGx2 SEXTGy2 EBE TILTARR;
         WRITE 6 'TSS DONE';
         {WRITE 6 MU;}
         MU0 := CONS(MU);
-        OBJ := ABS(MU0);
+        OBJ := CONS(NBAR(2));
         WRITE 6 'EBE, MU0 = '&ST(EB1)&', '&ST(MU0);
         WRITE 6 'OBJ ='&ST(OBJ);
       ENDFIT 1E-15 1000 1 OBJ;
@@ -102,6 +102,8 @@ PROCEDURE MAIN;
   EB1 := 0.0;
   EB1 := 129.5058235952117; {8-period}
   EB1 := 132.6727764948780; {16-period}
+
+  EB1 := 132;
 
   OV 3 3 0;
   {DAEPS 1E-12;}

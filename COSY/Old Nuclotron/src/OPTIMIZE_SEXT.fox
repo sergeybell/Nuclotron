@@ -271,9 +271,9 @@ PROCEDURE MAIN;
   {spin tune ~ 10^-7}
   EB1 := 0.0;
   EB1 := 129.5058235952117; {8-period}
-  EB1 := 129.0;
+  {EB1 := 129.0;
   EB1 := 132.6727764948780; {16-period}
-  EB1 := 131.5;
+  EB1 := 131.5;}
 
   {SEXTUPOLES}
   {natural chromaticity}
@@ -281,6 +281,10 @@ PROCEDURE MAIN;
   SGy1 := 0.0;
   SGX2 := 0.0;
   SGy2 := 0.0;
+
+  SGx1 := -.6799259350554631E-002;
+  SGy1 := -.4691403605045742E-001;
+  SGx2 := 0.6869494176206414E-001;
 
   WRITE 6 'SGx1, SGy1, EB1 = '&ST(SGx1)&' '&ST(SGy1)&' '&ST(EB1);
   WRITE 6 'SGx2, SGy2 = '&ST(SGx2)&' '&ST(SGy2);

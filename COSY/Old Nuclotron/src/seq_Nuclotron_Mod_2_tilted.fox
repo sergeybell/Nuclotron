@@ -1,5 +1,22 @@
 INCLUDE 'header';
 
+{
+Optimize WF & sextupole parameters for QFS 1) beta chrom; 2)spin coherence SEPARETLY
+{WIEN FILTER}
+{spin tune ~ 10^-7}
+EB1 := 129.5058235952117; {8-period}
+{8 period}
+{beta chromaticity}
+{SGx1 := 0.1991238684213407E-001;
+SGy1 := -.8748935486678192E-001;
+SGx2 := -.5372269072515854E-001;}
+
+{coherence}
+SGx1 := -.6799259350554631E-002;
+SGy1 := -.4691403605045742E-001;
+SGx2 := 0.6869494176206414E-001;
+}
+
 PROCEDURE LATTICE SEXTGx1 SEXTGy1 SEXTGx2 SEXTGy2 EB1 RFFLAG TILTARR SOL;
   VARIABLE VRF 1 1 1;
   VARIABLE FREQ 1;
