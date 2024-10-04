@@ -26,171 +26,187 @@
   11554     ENDPROCEDURE;
   11555   PROCEDURE MAIN;
   11556     VARIABLE I 1;
-  11557     VARIABLE GAMMA 1;
-  11558     VARIABLE BETA 1;
-  11559     VARIABLE MU 800;
-  11560     VARIABLE NBAR 800 3;
-  11561     VARIABLE MU_N_ARR 5000 1000;
-  11562     VARIABLE MU_TP 800 3;
-  11563     VARIABLE MU0 1;
-  11564     VARIABLE ALPHA0 1;
-  11565     VARIABLE ALPHA1 1;
-  11566     VARIABLE ALPHA2 1;
-  11567     VARIABLE ETA0 1;
-  11568     VARIABLE ETA1 1;
-  11569     VARIABLE VALUE0 1;
-  11570     VARIABLE VALUE1 1;
-  11571     VARIABLE CHROM_X 1;
-  11572     VARIABLE CHROM_Y 1;
-  11573     VARIABLE QUADKX 1;
-  11574     VARIABLE QUADKY 1;
-  11575     VARIABLE QUADKZ 1;
-  11576     VARIABLE NX 1;
-  11577     VARIABLE NY 1;
-  11578     VARIABLE NZ 1;
-  11579     VARIABLE EB1 1;
-  11580     VARIABLE SGX1 1;
-  11581     VARIABLE SGY1 1;
-  11582     VARIABLE SGX2 1;
-  11583     VARIABLE SGY2 1;
-  11584     VARIABLE TILT 48;
-  11585     VARIABLE NTURN 1;
-  11586     VARIABLE MODE 100;
-  11587     VARIABLE FRINGE_FIELD 100;
-  11588     VARIABLE CASE 1;
-  11589     GAMMA := 1.143914;
-  11590     BETA := SQRT(1-1/(GAMMA*GAMMA));
-  11591     TILT := ZEROS(48); %ZEROS: 9812
-  11592     NTURN := 100;
-  11593     OV 3 3 0; %OV:  969
-  11594     SET_FOR_DEUTERONS GAMMA; %SET_FOR_DEUTERONS:10611
-  11595     EB1 := 132.685;
-  11596     SGX1 := 0.0;
-  11597     SGY1 := 0.0;
-  11598     SGX2 := 0.0;
-  11599     SGY2 := 0.0;
-  11600     SGY1 := -.5458494419716226E-001;
-  11601     MODE:= 'X';
-  11602     FRINGE_FIELD := 'ON';
-  11603     OPENF 772 'dat/SCvsBC/'&ST(MODE)&'/Params_'&ST(FRINGE_FIELD)&'.dat
-                  ' 'OLD';
-  11604     WRITE 772 'I SGx1 SGy1 SGx2 EB1 CHROM_X CHROM_Y ALPHA0 ALPHA1 ETA1
-                  ';
-  11605     OPENF 773 'dat/SCvsBC/'&ST(MODE)&'/TSS_analysis_'&ST(FRINGE_FIELD)
-                  &'.dat' 'OLD';
-  11606     WRITE 773 'I CONS(MU) CONS(NBAR(1)) CONS(NBAR(2)) CONS(NBAR(3)) qu
-                  adKx quadKy quadKz';
-  11607     OPENF 774 'dat/SCvsBC/'&ST(MODE)&'/Particles_'&ST(FRINGE_FIELD)&'.
-                  dat' 'OLD';
-  11608     WRITE 774 'I SPIN-TUNE(1) SPIN-TUNE(2) SPIN-TUNE(3)';
-  11609     LOOP I 1 30;
-  11610       CASE := MRK(I); %MRK: 9786
-  11611       IF FRINGE_FIELD='ON';
-  11612         WRITE 6 'FRINGE_FIELD ON';
-  11613         FR 3; %FR: 5434
-  11614         ELSEIF FRINGE_FIELD='OFF';
-  11615         WRITE 6 'FRINGE_FIELD OFF';
-  11616         ENDIF;
-  11617       LATTICE SGX1 SGY1 SGX2 SGY2 EB1 1 TILT 0; %LATTICE:10648
-  11618       WRITE 6 'LATTICE ALREADY READ';
-  11619       CR; %CR:  947
-  11620       IF MODE='X';
-  11621         WRITE 6 'X-plane';
-  11622         SR 0 0 0 0 0 0 0 0 1; %SR: 2082
-  11623         SSR 0 0 1; %SSR: 2197
-  11624         SR 1*1E-3 0 0 0 0 0 0 0 1; %SR: 2082
-  11625         SSR 0 0 1; %SSR: 2197
-  11626         SR 2*1E-3 0 0 0 0 0 0 0 1; %SR: 2082
-  11627         SSR 0 0 1; %SSR: 2197
-  11628         SR 5*1E-3 0 0 0 0 0 0 0 1; %SR: 2082
-  11629         SSR 0 0 1; %SSR: 2197
-  11630         ELSEIF MODE='Y';
-  11631         WRITE 6 'Y-plane';
-  11632         SR 0 0 0 0 0 0 0 0 1; %SR: 2082
-  11633         SSR 0 0 1; %SSR: 2197
-  11634         SR 0 0 1*1E-3 0 0 0 0 0 1; %SR: 2082
-  11635         SSR 0 0 1; %SSR: 2197
-  11636         SR 0 0 2*1E-3 0 0 0 0 0 1; %SR: 2082
-  11637         SSR 0 0 1; %SSR: 2197
-  11638         SR 0 0 5*1E-3 0 0 0 0 0 1; %SR: 2082
-  11639         SSR 0 0 1; %SSR: 2197
-  11640         ELSEIF MODE='D';
-  11641         WRITE 6 'D-plane';
-  11642         SR 0 0 0 0 0 0 0 0 1; %SR: 2082
-  11643         SSR 0 0 1; %SSR: 2197
-  11644         SR 0 0 0 0 0 1/10*1E-3 0 0 1; %SR: 2082
-  11645         SSR 0 0 1; %SSR: 2197
-  11646         SR 0 0 0 0 0 2/10*1E-3 0 0 1; %SR: 2082
-  11647         SSR 0 0 1; %SSR: 2197
-  11648         SR 0 0 0 0 0 5/10*1E-3 0 0 1; %SR: 2082
-  11649         SSR 0 0 1; %SSR: 2197
-  11650         ENDIF;
-  11651       TSS MU NBAR 0; %TSS: 4289
-  11652       GET_TUNE_ENSEMBLE MU_N_ARR; %GET_TUNE_ENSEMBLE: 9896
-  11653       MU0 := CONS(MU);
-  11654       DAPEE MU 11 QUADKX;
-  11655       DAPEE MU 33 QUADKY;
-  11656       DAPEE MU 66 QUADKZ;
-  11657       NX := CONS(NBAR(1));
-  11658       NY := CONS(NBAR(2));
-  11659       NZ := CONS(NBAR(3));
-  11660       MCMCALC ALPHA0 ALPHA1; %MCMCALC:11531
-  11661       ETA1 := ALPHA1+(3/2)*(BETA*BETA)/(GAMMA*GAMMA)-ALPHA0/(GAMMA*GAM
-                  MA)+1/(GAMMA*GAMMA*GAMMA*GAMMA);
-  11662       OPENF 3618 'dat/ALPHA/SEXTUPOLES.dat' 'REPLACE';
-  11663       WRITE 3618 ST(SGX1);
-  11664       WRITE 3618 ST(SGY1);
-  11665       WRITE 3618 ST(SGX2);
-  11666       WRITE 3618 ST(SGY2);
-  11667       CLOSEF 3618;
-  11668       OS 'cosy Chrom.fox';
-  11669       OPENF 100500 'dat/ALPHA/Chrom.dat' 'OLD';
-  11670       READ 100500 VALUE0;
-  11671       READ 100500 VALUE1;
-  11672       CHROM_X := VALUE0;
-  11673       CHROM_Y := VALUE1;
-  11674       CLOSEF 100500;
-  11675       WRITE 6 'SGx1, SGy1, EB1 = '&ST(SGX1)&' '&ST(SGY1)&' '&ST(EB1);
-  11676       WRITE 6 'CHROM_X, CHROM_Y = '&ST(CHROM_X)&' '&ST(CHROM_Y);
-  11677       WRITE 6 'quadKx, quadKy, quadKz = '&ST(QUADKX)&' '&ST(QUADKY)&' 
-                  '&ST(QUADKZ);
-  11678       WRITE 6 'CONS(MU) = '&ST(CONS(MU));
-  11679       WRITE 6 'SPIN-TUNE = '&ST(MU_N_ARR(1)|3-CONS(MU));
-  11680       WRITE 6 'ALPHA0, ALPHA1 = '&ST(ALPHA0)&' '&ST(ALPHA1);
-  11681       WRITE 772 ST(I)&' '&ST(SGX1)&' '&ST(SGY1)&' '&ST(SGX2)&' '&ST(EB
-                  1)&' '&ST(CHROM_X)&' '&ST(CHROM_Y)&' '&ST(ALPHA0)&' '&ST(ALP
-                  HA1)&' '&ST(ETA1);
-  11682       WRITE 773 ST(I)&' '&ST(MU0)&' '&ST(NX)&' '&ST(NY)&' '&ST(NZ)&' '
-                  &ST(QUADKX)&' '&ST(QUADKY)&' '&ST(QUADKZ);
-  11683       WRITE 774 ST(I)&' '&ST(MU_N_ARR(1)|3-CONS(MU))&' '&ST(MU_N_ARR(1
-                  )|4-CONS(MU))&' '&ST(MU_N_ARR(1)|5-CONS(MU));
-  11684       OPENF 892 'dat/SCvsBC/'&ST(MODE)&'/TRPRAY_'&ST(FRINGE_FIELD)&'_'
+  11557     VARIABLE J 1;
+  11558     VARIABLE GAMMA 1;
+  11559     VARIABLE BETA 1;
+  11560     VARIABLE MU 800;
+  11561     VARIABLE NBAR 800 3;
+  11562     VARIABLE MU_N_ARR 5000 1000;
+  11563     VARIABLE MU_TP 800 3;
+  11564     VARIABLE MU0 1;
+  11565     VARIABLE ALPHA0 1;
+  11566     VARIABLE ALPHA1 1;
+  11567     VARIABLE ALPHA2 1;
+  11568     VARIABLE ETA0 1;
+  11569     VARIABLE ETA1 1;
+  11570     VARIABLE VALUE0 1;
+  11571     VARIABLE VALUE1 1;
+  11572     VARIABLE CHROM_X 1;
+  11573     VARIABLE CHROM_Y 1;
+  11574     VARIABLE QUADKX 1;
+  11575     VARIABLE QUADKY 1;
+  11576     VARIABLE QUADKZ 1;
+  11577     VARIABLE NX 1;
+  11578     VARIABLE NY 1;
+  11579     VARIABLE NZ 1;
+  11580     VARIABLE EB1 1;
+  11581     VARIABLE SGX1 1;
+  11582     VARIABLE SGY1 1;
+  11583     VARIABLE SGX2 1;
+  11584     VARIABLE SGY2 1;
+  11585     VARIABLE TILT 48;
+  11586     VARIABLE NTURN 1;
+  11587     VARIABLE MODE 100;
+  11588     VARIABLE FRINGE_FIELD 100;
+  11589     VARIABLE CASE 1;
+  11590     GAMMA := 1.143914;
+  11591     BETA := SQRT(1-1/(GAMMA*GAMMA));
+  11592     TILT := ZEROS(48); %ZEROS: 9812
+  11593     NTURN := 1;
+  11594     OV 3 3 0; %OV:  969
+  11595     SET_FOR_DEUTERONS GAMMA; %SET_FOR_DEUTERONS:10611
+  11596     EB1 := 132.6727764948780;
+  11597     FRINGE_FIELD := 'OFF';
+  11598     LOOP J 1 3;
+  11599       WRITE 6 '----------------------------SET MODE-------------------
+                  ---------';
+  11600       SGX1 := 0.0;
+  11601       SGY1 := 0.0;
+  11602       SGX2 := 0.0;
+  11603       SGY2 := 0.0;
+  11604       IF J=1;
+  11605         WRITE 6 'X-MODE';
+  11606         MODE := 'X';
+  11607         ELSEIF J=2;
+  11608         WRITE 6 'Y-MODE';
+  11609         MODE := 'Y';
+  11610         ELSEIF J=3;
+  11611         WRITE 6 'D-MODE';
+  11612         MODE := 'D';
+  11613         ENDIF;
+  11614       OPENF 772 'dat/SCvsBC/'&ST(MODE)&'/Params_'&ST(FRINGE_FIELD)&'.d
+                  at' 'OLD';
+  11615       WRITE 772 'I SGx1 SGy1 SGx2 EB1 CHROM_X CHROM_Y ALPHA0 ALPHA1 ET
+                  A1';
+  11616       OPENF 773 'dat/SCvsBC/'&ST(MODE)&'/TSS_analysis_'&ST(FRINGE_FIEL
+                  D)&'.dat' 'OLD';
+  11617       WRITE 773 'I CONS(MU) CONS(NBAR(1)) CONS(NBAR(2)) CONS(NBAR(3)) 
+                  quadKx quadKy quadKz';
+  11618       OPENF 774 'dat/SCvsBC/'&ST(MODE)&'/Particles_'&ST(FRINGE_FIELD)&
+                  '.dat' 'OLD';
+  11619       WRITE 774 'I SPIN-TUNE(1) SPIN-TUNE(2) SPIN-TUNE(3)';
+  11620       LOOP I 1 30;
+  11621         WRITE 6 '----------------------------ANOTHER LOOP-------------
+                  ---------------';
+  11622         CASE := MRK(I); %MRK: 9786
+  11623         IF FRINGE_FIELD='ON';
+  11624           WRITE 6 'FRINGE_FIELD ON';
+  11625           FR 3; %FR: 5434
+  11626           ELSEIF FRINGE_FIELD='OFF';
+  11627           WRITE 6 'FRINGE_FIELD OFF';
+  11628           ENDIF;
+  11629         LATTICE SGX1 SGY1 SGX2 SGY2 EB1 1 TILT 0; %LATTICE:10648
+  11630         WRITE 6 'LATTICE ALREADY READ';
+  11631         CR; %CR:  947
+  11632         IF MODE='X';
+  11633           WRITE 6 'X-plane';
+  11634           SR 0 0 0 0 0 0 0 0 1; %SR: 2082
+  11635           SSR 0 0 1; %SSR: 2197
+  11636           SR 1*1E-3 0 0 0 0 0 0 0 1; %SR: 2082
+  11637           SSR 0 0 1; %SSR: 2197
+  11638           SR 5*1E-3 0 0 0 0 0 0 0 1; %SR: 2082
+  11639           SSR 0 0 1; %SSR: 2197
+  11640           SR 10*1E-3 0 0 0 0 0 0 0 1; %SR: 2082
+  11641           SSR 0 0 1; %SSR: 2197
+  11642           ELSEIF MODE='Y';
+  11643           WRITE 6 'Y-plane';
+  11644           SR 0 0 0 0 0 0 0 0 1; %SR: 2082
+  11645           SSR 0 0 1; %SSR: 2197
+  11646           SR 0 0 1*1E-3 0 0 0 0 0 1; %SR: 2082
+  11647           SSR 0 0 1; %SSR: 2197
+  11648           SR 0 0 5*1E-3 0 0 0 0 0 1; %SR: 2082
+  11649           SSR 0 0 1; %SSR: 2197
+  11650           SR 0 0 10*1E-3 0 0 0 0 0 1; %SR: 2082
+  11651           SSR 0 0 1; %SSR: 2197
+  11652           ELSEIF MODE='D';
+  11653           WRITE 6 'D-plane';
+  11654           SR 0 0 0 0 0 0 0 0 1; %SR: 2082
+  11655           SSR 0 0 1; %SSR: 2197
+  11656           SR 0 0 0 0 0 1/10*1E-3 0 0 1; %SR: 2082
+  11657           SSR 0 0 1; %SSR: 2197
+  11658           SR 0 0 0 0 0 5/10*1E-3 0 0 1; %SR: 2082
+  11659           SSR 0 0 1; %SSR: 2197
+  11660           SR 0 0 0 0 0 10/10*1E-3 0 0 1; %SR: 2082
+  11661           SSR 0 0 1; %SSR: 2197
+  11662           ENDIF;
+  11663         TSS MU NBAR 0; %TSS: 4289
+  11664         GET_TUNE_ENSEMBLE MU_N_ARR; %GET_TUNE_ENSEMBLE: 9896
+  11665         MU0 := CONS(MU);
+  11666         DAPEE MU 11 QUADKX;
+  11667         DAPEE MU 33 QUADKY;
+  11668         DAPEE MU 66 QUADKZ;
+  11669         NX := CONS(NBAR(1));
+  11670         NY := CONS(NBAR(2));
+  11671         NZ := CONS(NBAR(3));
+  11672         MCMCALC ALPHA0 ALPHA1; %MCMCALC:11531
+  11673         ETA1 := ALPHA1+(3/2)*(BETA*BETA)/(GAMMA*GAMMA)-ALPHA0/(GAMMA*G
+                  AMMA)+1/(GAMMA*GAMMA*GAMMA*GAMMA);
+  11674         OPENF 3618 'dat/ALPHA/SEXTUPOLES.dat' 'REPLACE';
+  11675         WRITE 3618 ST(SGX1);
+  11676         WRITE 3618 ST(SGY1);
+  11677         WRITE 3618 ST(SGX2);
+  11678         WRITE 3618 ST(SGY2);
+  11679         CLOSEF 3618;
+  11680         OS 'cosy Chrom.fox';
+  11681         OPENF 100500 'dat/ALPHA/Chrom.dat' 'OLD';
+  11682         READ 100500 VALUE0;
+  11683         READ 100500 VALUE1;
+  11684         CHROM_X := VALUE0;
+  11685         CHROM_Y := VALUE1;
+  11686         CLOSEF 100500;
+  11687         WRITE 6 'SGx1, SGy1, EB1 = '&ST(SGX1)&' '&ST(SGY1)&' '&ST(EB1)
+                  ;
+  11688         WRITE 6 'CHROM_X, CHROM_Y = '&ST(CHROM_X)&' '&ST(CHROM_Y);
+  11689         WRITE 6 'quadKx, quadKy, quadKz = '&ST(QUADKX)&' '&ST(QUADKY)&
+                  ' '&ST(QUADKZ);
+  11690         WRITE 6 'CONS(MU) = '&ST(CONS(MU));
+  11691         WRITE 6 'SPIN-TUNE = '&ST(MU_N_ARR(1)|3-CONS(MU));
+  11692         WRITE 6 'ALPHA0, ALPHA1 = '&ST(ALPHA0)&' '&ST(ALPHA1);
+  11693         WRITE 772 ST(I)&' '&ST(SGX1)&' '&ST(SGY1)&' '&ST(SGX2)&' '&ST(
+                  EB1)&' '&ST(CHROM_X)&' '&ST(CHROM_Y)&' '&ST(ALPHA0)&' '&ST(A
+                  LPHA1)&' '&ST(ETA1);
+  11694         WRITE 773 ST(I)&' '&ST(MU0)&' '&ST(NX)&' '&ST(NY)&' '&ST(NZ)&'
+                   '&ST(QUADKX)&' '&ST(QUADKY)&' '&ST(QUADKZ);
+  11695         WRITE 774 ST(I)&' '&ST(MU_N_ARR(1)|3-CONS(MU))&' '&ST(MU_N_ARR
+                  (1)|4-CONS(MU))&' '&ST(MU_N_ARR(1)|5-CONS(MU));
+  11696         OPENF 892 'dat/SCvsBC/'&ST(MODE)&'/TRPRAY_'&ST(FRINGE_FIELD)&'
+                  _'&CASE&'.dat' 'REPLACE';
+  11697         OPENF 893 'dat/SCvsBC/'&ST(MODE)&'/TRPSPI_'&ST(FRINGE_FIELD)&'
+                  _'&CASE&'.dat' 'REPLACE';
+  11698         OPENF 99  'dat/SCvsBC/'&ST(MODE)&'/PRAY_'&ST(FRINGE_FIELD)&'_'
                   &CASE&'.dat' 'REPLACE';
-  11685       OPENF 893 'dat/SCvsBC/'&ST(MODE)&'/TRPSPI_'&ST(FRINGE_FIELD)&'_'
-                  &CASE&'.dat' 'REPLACE';
-  11686       OPENF 99  'dat/SCvsBC/'&ST(MODE)&'/PRAY_'&ST(FRINGE_FIELD)&'_'&C
-                  ASE&'.dat' 'REPLACE';
-  11687       WRITE 6 '******************** STARTING TRACKING';
-  11688       PRAY 99; %PRAY: 2299
-  11689       TRPRAY 892; %TRPRAY: 5327
-  11690       TRPSPI 893; %TRPSPI: 5337
-  11691       TR NTURN NINT(NTURN/100) -1 -3 1.2 1.2 0 0 -12; %TR: 4756
-  11692       CLOSEF 99;
-  11693       CLOSEF 892;
-  11694       CLOSEF 893;
-  11695       IF MODE='X';
-  11696         SGX1 := SGX1+0.001;
-  11697         ELSEIF MODE='Y';
-  11698         SGY1 := SGY1-0.001;
-  11699         ELSEIF MODE='D';
-  11700         SGX1 := SGX1+0.001;
-  11701         ENDIF;
-  11702       ENDLOOP;
-  11703     CLOSEF 772;
-  11704     CLOSEF 773;
-  11705     CLOSEF 774;
-  11706     ENDPROCEDURE;
-  11707   PROCEDURE RUN;
-  11708     MAIN; %MAIN:11555
-  11709     ENDPROCEDURE;
-  11710   RUN; %RUN:11707
+  11699         WRITE 6 '******************** STARTING TRACKING';
+  11700         PRAY 99; %PRAY: 2299
+  11701         TRPRAY 892; %TRPRAY: 5327
+  11702         TRPSPI 893; %TRPSPI: 5337
+  11703         TR NTURN NINT(NTURN) -1 -3 1.2 1.2 0 0 -12; %TR: 4756
+  11704         CLOSEF 99;
+  11705         CLOSEF 892;
+  11706         CLOSEF 893;
+  11707         IF MODE='X';
+  11708           SGX1 := SGX1+0.002;
+  11709           ELSEIF MODE='Y';
+  11710           SGY1 := SGY1-0.002;
+  11711           ELSEIF MODE='D';
+  11712           SGX1 := SGX1+0.002;
+  11713           ENDIF;
+  11714         ENDLOOP;
+  11715       CLOSEF 772;
+  11716       CLOSEF 773;
+  11717       CLOSEF 774;
+  11718       ENDLOOP;
+  11719     ENDPROCEDURE;
+  11720   PROCEDURE RUN;
+  11721     MAIN; %MAIN:11555
+  11722     ENDPROCEDURE;
+  11723   RUN; %RUN:11720

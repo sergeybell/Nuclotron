@@ -28,7 +28,7 @@ def plot_3_rays(data, params, X, Y1, Y2, Y3, num_rays):
         verticalalignment='top', bbox=props)
     return fig, ax
 
-fringe_field = 'ON'
+fringe_field = 'OFF'
 
 CASE = 5
 
