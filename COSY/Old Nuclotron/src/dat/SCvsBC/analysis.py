@@ -13,17 +13,17 @@ def plot_3(data, X, Y1, Y2, Y3):
 
 def plot_all(fringe_field):
 
-    parameters_X = pd.read_table('X/Params_'+fringe_field+'.dat', sep="\s+")
-    parameters_Y = pd.read_table('Y/Params_'+fringe_field+'.dat', sep="\s+")
-    parameters_D = pd.read_table('D/Params_'+fringe_field+'.dat', sep="\s+")
+    parameters_X = pd.read_table('Reference/X/Params_'+fringe_field+'.dat', sep="\s+")
+    parameters_Y = pd.read_table('Reference/Y/Params_'+fringe_field+'.dat', sep="\s+")
+    parameters_D = pd.read_table('Reference/D/Params_'+fringe_field+'.dat', sep="\s+")
 
-    particles_X = pd.read_table('X/Particles_'+fringe_field+'.dat', sep="\s+")
-    particles_Y = pd.read_table('Y/Particles_'+fringe_field+'.dat', sep="\s+")
-    particles_D = pd.read_table('D/Particles_'+fringe_field+'.dat', sep="\s+")
+    particles_X = pd.read_table('Reference/X/Particles_'+fringe_field+'.dat', sep="\s+")
+    particles_Y = pd.read_table('Reference/Y/Particles_'+fringe_field+'.dat', sep="\s+")
+    particles_D = pd.read_table('Reference/D/Particles_'+fringe_field+'.dat', sep="\s+")
 
-    tss_X = pd.read_table('X/TSS_analysis_'+fringe_field+'.dat', sep="\s+")
-    tss_Y = pd.read_table('Y/TSS_analysis_'+fringe_field+'.dat', sep="\s+")
-    tss_D = pd.read_table('D/TSS_analysis_'+fringe_field+'.dat', sep="\s+")
+    tss_X = pd.read_table('Reference/X/TSS_analysis_'+fringe_field+'.dat', sep="\s+")
+    tss_Y = pd.read_table('Reference/Y/TSS_analysis_'+fringe_field+'.dat', sep="\s+")
+    tss_D = pd.read_table('Reference/D/TSS_analysis_'+fringe_field+'.dat', sep="\s+")
 
     temp_X = parameters_X.merge(particles_X, on=['I'])
     temp_Y = parameters_Y.merge(particles_Y, on=['I'])
