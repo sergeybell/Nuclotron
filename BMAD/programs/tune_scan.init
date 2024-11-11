@@ -1,0 +1,25 @@
+&params
+  ts%lat_file = "/home/bell/GIT_PROJECTS/Nuclotron/BMAD/lattices/Nuclotron_16.bmad"
+  ts%dat_out_file = "tune_scan.dat"
+
+  ts%Q_a0 = 0.35
+  ts%Q_a1 = 0.45
+  ts%dQ_a = 0.01
+  ts%a0_amp = 1
+
+  ts%Q_b0 = 0.23
+  ts%Q_b1 = 0.33
+  ts%dQ_b = 0.01
+  ts%b0_amp = 1
+
+  ts%pz0 = -0.005
+  ts%pz1 = 0.005
+  ts%dpz = 0.005
+
+  ts%n_turn = 100
+  ts%rf_on = F
+  bmad_com%radiation_damping_on = F
+  bmad_com%radiation_fluctuations_on = F
+  ts%debug = .false.
+/
+
