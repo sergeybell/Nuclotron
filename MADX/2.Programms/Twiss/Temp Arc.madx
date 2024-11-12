@@ -3,7 +3,8 @@ CHDIR, DIR = "/Users/Bell/GIT_REPOS/NUCLOTRON/MADX/1.Sequences/Full Sequence/";
 !CALL FILE = "Nuclotron+kicker";
 !CALL FILE = "8-periods_270_GeV_deuton+WF.seq";
 !CALL FILE = "var1.seq";
-CALL FILE = "/Users/Bell/GIT_REPOS/NUCLOTRON/MADX/1.Sequences/Full Sequence/Nuclotron_modernized_ARC_DEUTRON_48 mags_270 MeV_130 kv_Superper=WF+B+WF+WF+B+WF(disp compensated).seq";
+!CALL FILE = "/Users/Bell/GIT_REPOS/NUCLOTRON/MADX/1.Sequences/Full Sequence/Nuclotron_modernized_ARC_DEUTRON_48 mags_270 MeV_130 kv_Superper=WF+B+WF+WF+B+WF(disp compensated).seq";
+CALL FILE = "var1.seq";
 
 beam, MASS=1.876544,CHARGE=1, ENERGY=2.146544,
       EX=2e-05, EY=2e-05, SIGE=0.001;
@@ -22,7 +23,7 @@ TITLE, "Nuclotron Modernization";
 USE, PERIOD = MACHINE;
 CHDIR, DIR = "/Users/Bell/GIT_REPOS/NUCLOTRON/MADX";
 
-TWISS, DELTAP = 0.00, file=tbl/twiss.tbl;
+TWISS, DELTAP = 0.000, file=tbl/twiss.tbl;
 plot, haxis=s, vaxis1=betx,bety, vaxis2=dx, colour=100, style=1, noversion, file=img/twiss;
 plot, haxis=s, vaxis=dx, colour=100, style=1, noversion, file=img/twiss;
 
