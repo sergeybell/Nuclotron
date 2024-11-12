@@ -253,7 +253,7 @@
   10517     VARIABLE DWMDM 1;
   10518     L1:=L2;
   10519     B0:=ABS(B1)/10;
-  10520     B3:=ABS(B2)*1E5;
+  10520     B3:=B2*1E5;
   10521     R2:=CONS(CHIM)/B0;
   10522     R1:=CONS(CHIE)/B3;
   10523     TILT0 := TILT;
@@ -319,3 +319,4 @@
   10582     ENDPROCEDURE;
  --- BIN FILE WRITTEN: elements
   10583   SAVE 'elements';
+ts';

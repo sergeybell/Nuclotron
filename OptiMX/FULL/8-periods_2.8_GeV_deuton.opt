@@ -21,6 +21,7 @@
 	$GAMMA=1+($W/($NMASS));  =>  4.08375557
 	$E_kin = ($GAMMA-1) * $NMASS * $A;  =>        5745
 
+	$E_tot = sqrt($E_kin^2 + ($A*$NMASS)^2) ;  =>  6039.51569
 	$GAMMA=($NMASS+$W)/$NMASS;  =>  4.08375557
 	$BETA=sqrt(1.-1./$GAMMA^2);  => 0.969555254
 #ENERGY & MASS----------------------------------------------

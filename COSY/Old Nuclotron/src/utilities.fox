@@ -98,8 +98,9 @@ ENDFUNCTION;
 FUNCTION VEGAUSS MEAN SIGMA NUM PATH; {generate a vector of normally distributed random numbers}
   {PATH --- path to the data file containing the sequence of random numbers}
   VARIABLE VAL 1;
-  OS 'analysis/gauss.py '&ST(MEAN)&' '&ST(SIGMA)&SF(NUM,'(I10)')&' '&PATH&'.in';
-  OPENF 100500 PATH&'.in' 'OLD'; READ 100500 VAL;
+  OS 'python gauss.py '&ST(MEAN)&' '&ST(SIGMA)&SF(NUM,'(I10)')&' '&PATH&'.in';
+  OPENF 100500 PATH&'.in' 'OLD';
+  READ 100500 VAL;
   WHILE ST(VAL)#'';
     VEGAUSS:=VEGAUSS&VAL;
     READ 100500 VAL;

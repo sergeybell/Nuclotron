@@ -10000,3 +10000,284 @@
    9752     ENDPROCEDURE ;
  --- BIN FILE WRITTEN: cosy
    9753   SAVE 'cosy' ;
+      ENDIF ;
+   9484     Y0(1) := EI+M0*AMUMEV ;
+   9485     Y0(2) := TI ;
+   9486     RK4 2 0 L Y0 10 Z Y ; %RK4: 9428
+   9487     LOOP J 1 2 ;
+   9488       Y0(J) := Y(J) ;
+   9489       ENDLOOP ;
+   9490     LOOP I 1 NO+1 ;
+   9491       EODE Y L YP ; %EODE: 9424
+   9492       LOOP J 1 2 ;
+   9493         DAINT NV YP(J) SCR ;
+   9494         Y(J) := Y0(J)+SCR ;
+   9495         ENDLOOP ;
+   9496       ENDLOOP ;
+   9497     EF := Y(1)-M0*AMUMEV ;
+   9498     TF := Y(2) ;
+   9499     ENDPROCEDURE ;
+   9500   FUNCTION VELC KE ;
+   9501     VARIABLE ETA0 NM1 ;
+   9502     ETA0 := KE/(M0*AMUMEV) ;
+   9503     VELC := SQRT(ETA0*(2+ETA0))/(1+ETA0) ;
+   9504     ENDFUNCTION ;
+   9505   PROCEDURE COSY2TR MC ;
+   9506     VARIABLE I 1 ;
+   9507     VARIABLE SCR NM1 ;
+   9508     SCR := ISRT( SQR(P0/CONS(P0))-SQR(XX(2))-SQR(XX(4)) ) ;
+   9509     LOOP I 1 TWOND ;
+   9510       MC(I) := XX(I) ;
+   9511       ENDLOOP ;
+   9512     LOOP I 2 4 2 ;
+   9513       MC(I) := MC(I)*SCR ;
+   9514       ENDLOOP ;
+   9515     MC(5) := -CONS(P0)/CONS(E0)*MC(5) ;
+   9516     ENDPROCEDURE ;
+   9517   PROCEDURE WA SS1 SS2 N L D ;
+   9518     VARIABLE SS0 1 N+1 N+1 ;
+   9519     VARIABLE XX0 NM1 NV ;
+   9520     VARIABLE MC NM1 NV ;
+   9521     VARIABLE LF NM1 ;
+   9522     VARIABLE LF1 NM1 ;
+   9523     VARIABLE LF2 NM1 ;
+   9524     VARIABLE IER 1 ;
+   9525     VARIABLE TF NM1 ;
+   9526     VARIABLE EF NM1 ;
+   9527     VARIABLE I 1 ;
+   9528     VARIABLE J 1 ;
+   9529     IF L<1.D-12 ;
+   9530       WRITE 6  ' *** ERROR in WA, L must be positive' ;
+   9531       QUIT 0 ;
+   9532       ELSEIF LUM#1 ;
+   9533       WRITE 6  ' *** ERROR, call UM before WA' ;
+   9534       QUIT 0 ;
+   9535       ELSEIF ND#3 ;
+   9536       WRITE 6 (' *** ERROR in WA, '&         'call OV with phase space
+                   dimension 3') ;
+   9537       QUIT 0 ;
+   9538       ENDIF ;
+   9539     LOOP I 1 N+1 ;
+   9540       LOOP J 1 N+1 ;
+   9541         SS0(I,J) := 0 ;
+   9542         ENDLOOP ;
+   9543       ENDLOOP ;
+   9544     LCO := 1 ;
+   9545     WL SS1 SS0 MIN(N,NO) 0 0.5*L LF1 ; %WL: 9319 %MIN:  207
+   9546     WL SS0 SS2 MIN(N,NO) 0.5*L L LF2 ; %WL: 9319 %MIN:  207
+   9547     LCO := 0 ;
+   9548     LF := LF1+LF2 ;
+   9549     EL E0 DD(5) L EF TF ; %EL: 9466
+   9550     MC(1) := TF ;
+   9551     MC(2) := EF ;
+   9552     LOOP I 1 NV-1 ;
+   9553       XX0(I) := DD(I) ;
+   9554       ENDLOOP ;
+   9555     XX0(NV) := LF-CONS(LF) ;
+   9556     POLVAL 1 MC 2 XX0 NV MC 2 ;
+   9557     EF := MC(2) ;
+   9558     TF := MC(1) ;
+   9559     LF := 0.5*L*SQRT(1+SQR(XX(2))+SQR(XX(4))) ;
+   9560     TF := TF + (LF-LF1)/VELC(E0) + (LF-LF2)/VELC(EF) ; %VELC: 9500 %VE
+                  LC: 9500
+   9561     XX0(1) := XX(1)+L*XX(2) ;
+   9562     XX0(2) := XX(2) ;
+   9563     XX0(3) := XX(3)+L*XX(4) ;
+   9564     XX0(4) := XX(4) ;
+   9565     XX0(5) := TF-CONS(TF) ;
+   9566     XX0(6) := (EF-CONS(EF))/CONS(EF) ;
+   9567     LOOP I 7 NV ;
+   9568       XX0(I) := DD(I) ;
+   9569       ENDLOOP ;
+   9570     COSY2TR MC ; %COSY2TR: 9505
+   9571     LOOP I 7 NV ;
+   9572       MC(I) := DD(I) ;
+   9573       ENDLOOP ;
+   9574     POLVAL 1 XX0 NV MC NV XX0 NV ;
+   9575     RP CONS(EF) M0 Z0 ; %RP: 6326
+   9576     COSY2TR MC ; %COSY2TR: 9505
+   9577     LOOP I 7 NV ;
+   9578       MC(I) := DD(I) ;
+   9579       ENDLOOP ;
+   9580     MI MC MC NV IER NOC NV NM1 ; %MI:  430
+   9581     IF IER#0 ;
+   9582       WRITE 6 ' *** ERROR in WA, MI inversion failed' ;
+   9583       QUIT 0 ;
+   9584       ENDIF ;
+   9585     POLVAL 1 MC NV XX0 NV XX0 NV ;
+   9586     LOOP I 1 6 ;
+   9587       MSC(I) := XX0(I) ;
+   9588       ENDLOOP ;
+   9589     LOOP I 7 8 ;
+   9590       MSC(I) := XX(I) ;
+   9591       ENDLOOP ;
+   9592     LOCSET 0 L 0 L 0 0 ; %LOCSET: 1114
+   9593     DR := D ;
+   9594     CE := 'WA' ;
+   9595     UPDATE 1 1 ; %UPDATE: 1261
+   9596     ENDPROCEDURE ;
+   9597   FUNCTION NUMEXP X ;
+   9598     VARIABLE ABX 1 ;
+   9599     ABX := ABS(X) ;
+   9600     IF ABX=0 ;
+   9601       NUMEXP := -300 ;
+   9602       ELSEIF ABX<1 ;
+   9603       NUMEXP := INT(LOG(ABX)/LOG(10))-1 ;
+   9604       ELSEIF LO(1) ;
+   9605       NUMEXP := INT(LOG(ABX)/LOG(10)) ;
+   9606       ENDIF ;
+   9607     ENDFUNCTION ;
+   9608   FUNCTION TICSINC XDIF ;
+   9609     VARIABLE SMP 1 ;
+   9610     VARIABLE NX 1 ;
+   9611     SMP := ABS(XDIF) ;
+   9612     NX := NUMEXP(SMP) ; %NUMEXP: 9597
+   9613     IF     SMP<(2*10^NX+0.01*SMP) ;
+   9614       TICSINC := 2*10^(NX-1) ;
+   9615       ELSEIF SMP<(5*10^NX+0.01*SMP) ;
+   9616       TICSINC := 5*10^(NX-1) ;
+   9617       ELSEIF LO(1) ;
+   9618       TICSINC := 10^NX ;
+   9619       ENDIF ;
+   9620     ENDFUNCTION ;
+   9621   PROCEDURE TICSTR X TIC CHAR DIG ;
+   9622     VARIABLE STR 40 ;
+   9623     VARIABLE FORM 40 ;
+   9624     VARIABLE NX 1 ;
+   9625     VARIABLE NTIC 1 ;
+   9626     VARIABLE WORD 2 2 ;
+   9627     VARIABLE NC 1 ;
+   9628     NX := NUMEXP(X) ; %NUMEXP: 9597
+   9629     NTIC := NUMEXP(TIC) ; %NUMEXP: 9597
+   9630     IF ABS(X)<1.D-300 ;
+   9631       STR := '0' ;
+   9632       ELSEIF ABS(NX)<5 ;
+   9633       IF NOT(NTIC<0) ;
+   9634         STR := SI(X) ; %SI:  288
+   9635         ELSEIF LO(1) ;
+   9636         IF NX<0 ;
+   9637           FORM := '(F'&SI(-NTIC+3)&'.'&SI(-NTIC)&')' ; %SI:  288 %SI: 
+                   288
+   9638           ELSEIF LO(1) ;
+   9639           FORM := '(F'&SI(NX-NTIC+3)&'.'&SI(-NTIC)&')' ; %SI:  288 %SI
+                  :  288
+   9640           ENDIF ;
+   9641         STR := SF(X,FORM) ; %SF:  285
+   9642         ENDIF ;
+   9643       ELSEIF LO(1) ;
+   9644       FORM := '(G'&SI(NX-NTIC+8)&'.'&SI(NX-NTIC+1)&')' ; %SI:  288 %SI
+                  :  288
+   9645       STR := SF(X,FORM) ; %SF:  285
+   9646       ENDIF ;
+   9647     WORDS STR NC WORD ' ' ; %WORDS:  378
+   9648     CHAR := STR|WORD(1) ;
+   9649     DIG := LENGTH(CHAR) ;
+   9650     ENDPROCEDURE ;
+   9651   PROCEDURE FILE2VE FN NC C VEC ;
+   9652     VARIABLE LIN 1000 ;
+   9653     VARIABLE WORD 2 20 ;
+   9654     VARIABLE NW 1 ;
+   9655     VARIABLE N 1 ;
+   9656     VARIABLE I 1 ;
+   9657     OPENF 77 FN 'OLD' ;
+   9658     LIN := 'start' ;
+   9659     N := 0 ;
+   9660     WHILE LIN#'' ;
+   9661       READS 77 LIN ;
+   9662       IF LIN#'' ;
+   9663         IF ((LIN|1)#'#')*(LIN#' ') ;
+   9664           WORDS LIN NW WORD ' ' ; %WORDS:  378
+   9665           IF NW>0 ;
+   9666             IF N=0 ;
+   9667               N := MIN(NC,NW) ; %MIN:  207
+   9668               LOOP I 1 N ;
+   9669                 VEC(I) := RE(LIN|WORD(C(I))) ;
+   9670                 ENDLOOP ;
+   9671               ELSEIF LO(1) ;
+   9672               LOOP I 1 N ;
+   9673                 VEC(I) := VEC(I)&RE(LIN|WORD(C(I))) ;
+   9674                 ENDLOOP ;
+   9675               ENDIF ;
+   9676             ENDIF ;
+   9677           ENDIF ;
+   9678         ENDIF ;
+   9679       ENDWHILE ;
+   9680     CLOSEF 77 ;
+   9681     ENDPROCEDURE ;
+   9682   PROCEDURE RFILT RMAX FN FNF ;
+   9683     VARIABLE LIN 1000 ;
+   9684     VARIABLE WORD 2 20 ;
+   9685     VARIABLE NW 1 ;
+   9686     VARIABLE X 1 ;
+   9687     VARIABLE Y 1 ;
+   9688     VARIABLE RMAX2 1 ;
+   9689     OPENF 77 FN 'OLD' ;
+   9690     OPENF 78 FNF 'UNKNOWN' ;
+   9691     WRITE 78 '# The original file: '&FN               '# Filter to sta
+                  y inside the radius RMAX = '&S(RMAX) ; %S:  282
+   9692     RMAX2 := SQR(RMAX*(1+1D-8)) ;
+   9693     LIN := 'start' ;
+   9694     WHILE LIN#'' ;
+   9695       READS 77 LIN ;
+   9696       IF LIN#'' ;
+   9697         IF (LIN|1)='#' ;
+   9698           WRITE 78 LIN ;
+   9699           ELSEIF LIN#' ' ;
+   9700           WORDS LIN NW WORD ' ' ; %WORDS:  378
+   9701           IF NW>0 ;
+   9702             X := RE(LIN|WORD(1)) ;
+   9703             Y := RE(LIN|WORD(2)) ;
+   9704             IF (SQR(X)+SQR(Y))<RMAX2 ;
+   9705               WRITE 78 LIN ;
+   9706               ENDIF ;
+   9707             ENDIF ;
+   9708           ENDIF ;
+   9709         ENDIF ;
+   9710       ENDWHILE ;
+   9711     CLOSEF 77 ;
+   9712     CLOSEF 78 ;
+   9713     ENDPROCEDURE ;
+   9714   PROCEDURE TSC WX WY NX NY DELTA FN ;
+   9715     VARIABLE MU NM1 3 ;
+   9716     VARIABLE MA 2*NM1 8 ;
+   9717     VARIABLE DX 1 ;
+   9718     VARIABLE DY 1 ;
+   9719     VARIABLE X 1 MAX(5,NV) ; %MAX:  204
+   9720     VARIABLE R 1 MAX(5,NV) ; %MAX:  204
+   9721     VARIABLE T 1 MAX(5,NV) ; %MAX:  204
+   9722     VARIABLE I 1 ;
+   9723     VARIABLE J 1 ;
+   9724     VARIABLE K 1 ;
+   9725     TS MU ; %TS: 3900
+   9726     NF 1D-7 MA ; %NF: 3895
+   9727     WRITE 6 'TUNESCAN, ORBITAL TUNES FROM TS: ' MU(1) MU(2) ;
+   9728     LOOP I 1 NV ;
+   9729       X(I) := 0 ;
+   9730       R(I) := 0 ;
+   9731       T(I) := 0 ;
+   9732       ENDLOOP ;
+   9733     X(5) := DELTA ;
+   9734     R(5) := DELTA ;
+   9735     DX := 2*WX/(NX-1) ;
+   9736     DY := 2*WY/(NY-1) ;
+   9737     OPENF 77 FN 'UNKNOWN' ;
+   9738     WRITE 77 ('#   x                        y                        '
+                  &                'x-tnue                   y-tune') ;
+   9739     LOOP I 1 NX ;
+   9740       X(1) := DX*(I-1)-WX ;
+   9741       LOOP J 1 NY ;
+   9742         X(3) := DY*(J-1)-WY ;
+   9743         POLVAL 1 MA TWOND X NV T TWOND ;
+   9744         LOOP K 1 ND ;
+   9745           R(2*K-1) := SQRT(SQR(T(2*K-1))+SQR(T(2*K))) ;
+   9746           ENDLOOP ;
+   9747         POLVAL 1 MU ND R NV T ND ;
+   9748         WRITE 77 (SF(X(1),'(E25.17)')&SF(X(3),'(E25.17)')&            
+                         SF(T(1),'(E25.17)')&SF(T(2),'(E25.17)')) ; %SF:  285 
+                  %SF:  285 %SF:  285 %SF:  285
+   9749         ENDLOOP ;
+   9750       ENDLOOP ;
+   9751     CLOSEF 77 ;
+   9752     ENDPROCEDURE ;
+ --- BIN FILE WRITTEN: cosy
+   9753   SAVE 'cosy' ;
