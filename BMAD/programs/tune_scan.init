@@ -1,16 +1,16 @@
 &params
-  ts%lat_file = "/home/bell/GIT_PROJECTS/Nuclotron/BMAD/lattices/Nuclotron_16.bmad"
+  ts%lat_file = "/home/bell/GIT_PROJECTS/Nuclotron/BMAD/lattices/var1.bmad"
   ts%dat_out_file = "tune_scan.dat"
 
-  ts%Q_a0 = 0.35
-  ts%Q_a1 = 0.45
+  ts%Q_a0 = 0.33
+  ts%Q_a1 = 0.50
   ts%dQ_a = 0.01
 
   ts%a_emit = 0.000001
   ts%a0_amp = 1
 
-  ts%Q_b0 = 0.23
-  ts%Q_b1 = 0.33
+  ts%Q_b0 = 0.33
+  ts%Q_b1 = 0.50
   ts%dQ_b = 0.01
   
   ts%b_emit = 0.000001

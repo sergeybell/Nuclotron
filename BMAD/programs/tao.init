@@ -5,7 +5,7 @@
 /
 
 &tao_design_lattice
-  design_lattice(1)%file='/home/bell/GIT_PROJECTS/Nuclotron/BMAD/lattices/8-periods_270_GeV_deuton+WF.bmad'
+  design_lattice(1)%file='/home/bell/GIT_PROJECTS/Nuclotron/BMAD/lattices/var1.bmad'
 /
 
 &tao_global_struct
