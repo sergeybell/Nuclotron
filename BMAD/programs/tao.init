@@ -6,6 +6,7 @@
 
 &tao_design_lattice
   design_lattice(1)%file='/home/bell/GIT_PROJECTS/Nuclotron/BMAD/lattices/var1.bmad'
+
 /
 
 &tao_global_struct
@@ -19,7 +20,7 @@
   global%plot_on = T
   global%track_type = 'beam'
   global%beam_timer_on = F
-  bmad_com%spin_tracking_on = T
+  bmad_com%spin_tracking_on = F
   bmad_com%radiation_damping_on = F
   bmad_com%radiation_fluctuations_on = F
   bmad_com%radiation_zero_average = F
@@ -33,9 +34,9 @@
   ix_universe = 1
   saved_at =  "MARKER::*, BEGINNING, END"
   beam_init%a_norm_emit = 1.0e-6  ! normalized emit = emit * gamma
-  beam_init%b_norm_emit = 1.0e-7  ! normalized emit = emit * gamma
+  beam_init%b_norm_emit = 1.0e-6  ! normalized emit = emit * gamma
   beam_init%dPz_dz = 0.0
-  beam_init%n_bunch = 1
+  beam_init%n_bunch = 10
   beam_init%bunch_charge = 1.6E-14
   beam_init%sig_pz = 0e-9
   beam_init%sig_z = 0.000899377 ! 3 ps * cLight

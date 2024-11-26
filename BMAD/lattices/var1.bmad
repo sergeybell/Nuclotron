@@ -15,15 +15,17 @@ o33: drift, l = 2.655
 os: drift, l = 0.05
 
 !------------Qx = 0.43 Qy = 0.44----------------
-qf: quadrupole, l = 0.2, k1 = 0.9680983075
-qf1: quadrupole, l = 0.2, k1 = 1.169914427
-qd1: quadrupole, l = 0.2, k1 = -1.16980758
-qd: quadrupole, l = 0.2, k1 = -0.9905689539
-sf: sextupole, l = 0.1, k2 = 7.977097676
-sd: sextupole, l = 0.1, k2 = -11.80982802
+QF: QUADRUPOLE,  L=0.2,   K1=0.9680983075
+QF1: QUADRUPOLE,  L=0.2,  K1=1.169914427
+QD1: QUADRUPOLE,  L=0.2,  K1=-1.16980758
+QD: QUADRUPOLE,  L=0.2,   K1=-0.9905689539
+SF: SEXTUPOLE,  L=0.1,    K2=7.977097676
+SD: SEXTUPOLE,  L=0.1,    K2=-11.80982809
+
+!sf: sextupole, l = 0.1, k2 = 0.0
+!sd: sextupole, l = 0.1, k2 = 0.0
 
 !-----------Qx = 0.483  Qy = 0.484 -------------
-
 !QF: QUADRUPOLE,  L=0.2,  K1=0.9677757429;
 !QF1: QUADRUPOLE,  L=0.2,  K1=1.175593505;
 !QD1: QUADRUPOLE,  L=0.2,  K1=-1.169417831;
@@ -65,3 +67,5 @@ MACHINE: LINE=(QD, O1, QF1, QF1, O4, BM, O2, QD1, QD1, O4, BM, O2, QF1,QF1, O4, 
           QF1,O4, BM, O2, QD1, QD1, Os, SD, O33, SF, Os, QF, QF, O3, SD, Os, QD1, QD1,O2, BM, O4, QF1, QF1, O2, BM, O4, QD1, QD1,
           O2, BM, O4, QF1, QF1, O1, QD,QD, O1, QF1, QF1, O4, BM, O2, QD1, QD1, O4, BM, O2, QF1, QF1, O4, BM, O2,QD1, QD1, Os, SD,
           O33, SF, Os, QF, QF, O3, SD, Os, QD1, QD1, O2, BM, O4,QF1, QF1, O2, BM, O4, QD1, QD1, O2, BM, O4, QF1, QF1, O1, QD)
+
+USE, MACHINE
