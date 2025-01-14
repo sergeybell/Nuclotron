@@ -5,7 +5,7 @@
 /
 
 &tao_design_lattice
-  design_lattice(1)%file='/home/bell/GIT_PROJECTS/Nuclotron/BMAD/lattices/var1.bmad'
+  design_lattice(1)%file='/home/bell/GIT_PROJECTS/Nuclotron/BMAD/lattices/Nuclotron_8.bmad'
 
 /
 

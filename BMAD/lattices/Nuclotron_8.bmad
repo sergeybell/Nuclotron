@@ -41,10 +41,10 @@ o1: drift, l = 3.35
 o3: drift, l = 0.09
 o4: drift, l = 0.43
 o5: drift, l = 0.13
-qf: quadrupole, l = 0.2, k1 = 1.702861724
-qd: quadrupole, l = 0.2, k1 = -1.408198531
-qf1: quadrupole, l = 0.2, k1 = 1.154482524
-qd1: quadrupole, l = 0.2, k1 = -1.039034272
+qf: quadrupole, l = 0.4, k1 = 1.702861724
+qd: quadrupole, l = 0.4, k1 = -1.408198531
+qf1: quadrupole, l = 0.4, k1 = 1.154482524
+qd1: quadrupole, l = 0.4, k1 = -1.039034272
 sf1: sextupole, l = 0.3, k2 = 0
 sf2: sextupole, l = 0.3, k2 = 0
 sd: sextupole, l = 0.3, k2 = 0
@@ -64,8 +64,13 @@ ra: sbend, l = 3.35, angle = -0.086101367
 !MACHINE: LINE=(QD, QD, O3, BM, O5, SF2, QF, QF, O3, BM, O5, SD, QD, QD,O3, BM, O5, SF1, QF, QF, O3, BM, O5, SD, QD, QD,
 !          O3, BM, O5, SF2, QF, QF,O3, BM, O4, QD, QD, BK, RA, QF1, QF1, O1, QD1, QD1, O1, QF1, QF1, RA, BK)
 
-MACHINE: LINE=(QD, QD, O3, BM, O5, SF2, QF, QF, O3, BM, O5, SD, QD, QD,O3, BM, O5, SF1, QF, QF, O3, BM, O5, SD, QD, QD,
-          O3, BM, O5, SF2, QF, QF,O3, BM, O4, QD, QD, BK, O1, QF1, QF1, RA, QD1, QD1, RA, QF1, QF1, O1, BK)
+! Deflector at centre
+!MACHINE: LINE=(QD, O3, BM, O5, SF2, QF, O3, BM, O5, SD, QD, O3, BM, O5, SF1, QF, O3, BM, O5, SD, QD,
+!          O3, BM, O5, SF2, QF, O3, BM, O4, QD, BK, O1, QF1, RA, QD1, RA, QF1, O1, BK)
+
+! Deflector af edge
+MACHINE: LINE=(QD, O3, BM, O5, SF2, QF, O3, BM, O5, SD, QD, O3, BM, O5, SF1, QF, O3, BM, O5, SD, QD,
+          O3, BM, O5, SF2, QF, O3, BM, O4, QD, BK, RA, QF1, O1, QD1, O1, QF1, RA, BK)
 
 FULL: LINE=(8*MACHINE)
 
