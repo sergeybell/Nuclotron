@@ -1,0 +1,58 @@
+!+
+! Translated from MADX to Bmad by madx_to_bmad.py
+! File: Nuclotron_original.seq
+!-
+
+
+!TITLE Converted from LATTICE EDITOR: Nuclotron_fodo.opt[*].  Tue Jan 14 14:33:20 2025
+
+!  Kinetic energy=8000 MeV, mass=1862.99 MeV
+!  BetaX=12.3799 m,  AlphaX=1237.62,  BetaY=2.89167 m,  AlphaY=289.072
+!  DispX=-0.0211469 m,  DispPX=395.169,  DispY=0.00572777 m,  DispPY=0
+
+parameter[E_tot] = 2.132988122 * 1e9
+parameter[particle] = deuteron
+parameter[geometry] = closed
+
+ra: sbend, l = 3.19092, angle = -0.08610130667
+bk: sbend, l = 0.3, angle = 0.08610130667
+!ra: sbend, l = 3.46092, angle = 0
+!bk: sbend, l = 0.03, angle = 0
+
+bm: sbend, l = 1.41961, angle = 0.06545016744
+o1: drift, l = 3.49092
+o2: drift, l = 0.130656
+o3: drift, l = 0.0903928
+o4: drift, l = 0.430656
+qf: quadrupole, l = 0.43908, k1 = 0.7889024982
+qd: quadrupole, l = 0.43908, k1 = -0.7899456106
+
+!MACHINE: LINE=(QF, O1, QD, O1, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM,O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3,
+!          BM, O4, QF, O2, BM, O3, BM, O4,QD, O2, BM, O3, BM, O4, QF, O1, QD, O1, QF, O2, BM, O3, BM, O4, QD, O2, BM,O3, BM, O4,
+!          QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3,BM, O4, QD, O2, BM, O3, BM, O4, QF, O1, QD, O1, QF, O2,
+!          BM, O3, BM, O4, QD,O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O2,BM, O3, BM, O4, QD, O2,
+!          BM, O3, BM, O4, QF, O1, QD, O1, QF, O2, BM, O3, BM,O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3,
+!          BM, O4,QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O1, QD, O1, QF, O2, BM,O3, BM, O4, QD, O2, BM, O3, BM, O4,
+!          QF, O2, BM, O3, BM, O4, QD, O2, BM, O3,BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O1, QD, O1, QF,O2,
+!          BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2,BM, O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2,
+!          BM, O3, BM, O4, QF, O1, QD,O1, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4,QD, O2, BM, O3,
+!          BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF,O1, QD, O1, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4,
+!          QF, O2, BM, O3,BM, O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM,O4)
+
+!MACHINE: LINE = (QF, O1, QD, O1,
+!                 QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4,
+!                 QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, 
+!                 QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4)
+
+MACHINE: LINE = (QF, BK, RA, QD, RA, BK,
+                 QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4,
+                 QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, 
+                 QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4)
+
+FULL: LINE = (8*MACHINE)
+
+parameter[E_tot] = 9.862988122 * 1e9
+parameter[geometry] = closed
+
+use, FULL
+

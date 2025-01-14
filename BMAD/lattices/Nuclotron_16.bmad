@@ -30,17 +30,17 @@ osd: drift, l = 0.1
 
 !-----plain----
 qf: quadrupole, l = 0.21, k1 = 1.003756466
-qf1: quadrupole, l = 0.2, k1 = 1.111418801
-qf0: quadrupole, l = 0.2, k1 = 1.000072002
-qd1: quadrupole, l = 0.2, k1 = -1.314462407
-qd: quadrupole, l = 0.2, k1 = -0.7851569388
+qf1: quadrupole, l = 2*0.2, k1 = 1.111418801
+qf0: quadrupole, l = 2*0.2, k1 = 1.000072002
+qd1: quadrupole, l = 2*0.2, k1 = -1.314462407
+qd: quadrupole, l = 2*0.2, k1 = -0.7851569388
 
 !--------------
 sf: sextupole, l = 0.12, k2 = 6.193661406
 sd: sextupole, l = 0.12, k2 = -9.005980982
 
-MACHINE: LINE=(QD, O1, QF1, QF1, O2, BM, O4, QD1, QD1, O2, BM, O4, QF0,QF0, O2, BM, O4, QD1, QD1, Osd, Sd, O3, QF, Osf,
-          Sf, Osf, QF, O3, Sd, Osd,QD1, QD1, O4, BM, O2, QF0, QF0, O4, BM, O2, QD1, QD1, O4, BM, O2, QF1, QF1,O1, QD)
+MACHINE: LINE=(QD, O1, QF1, O2, BM, O4, QD1, O2, BM, O4, QF0, O2, BM, O4, QD1, Osd, Sd, O3, QF, Osf,
+          Sf, Osf, QF, O3, Sd, Osd, QD1, O4, BM, O2, QF0, O4, BM, O2, QD1, O4, BM, O2, QF1, O1)
 
 RING: LINE = (8*MACHINE)
 
