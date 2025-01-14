@@ -1,0 +1,46 @@
+!TITLE Converted from LATTICE EDITOR: Nuclotron_fodo.opt[*].  Tue Jan 14 14:33:20 2025
+
+!  Kinetic energy=8000 MeV, mass=1862.99 MeV
+!  BetaX=12.3799 m,  AlphaX=1237.62,  BetaY=2.89167 m,  AlphaY=289.072
+!  DispX=-0.0211469 m,  DispPX=395.169,  DispY=0.00572777 m,  DispPY=0 
+
+BM: SBEND,  L=1.41961,  ANGLE=0.06545016744;
+O1: DRIFT, L=3.49092 ;
+O2: DRIFT, L=0.130656 ;
+O3: DRIFT, L=0.0903928 ;
+O4: DRIFT, L=0.430656 ;
+QF: QUADRUPOLE,  L=0.43908,  K1=0.7889024982;
+QD: QUADRUPOLE,  L=0.43908,  K1=-0.7899456106;
+
+MACHINE: LINE=(QF, O1, QD, O1, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM,
+O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4,
+QD, O2, BM, O3, BM, O4, QF, O1, QD, O1, QF, O2, BM, O3, BM, O4, QD, O2, BM,
+O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3,
+BM, O4, QD, O2, BM, O3, BM, O4, QF, O1, QD, O1, QF, O2, BM, O3, BM, O4, QD,
+O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O2,
+BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O1, QD, O1, QF, O2, BM, O3, BM,
+O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4,
+QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O1, QD, O1, QF, O2, BM,
+O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3,
+BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O1, QD, O1, QF,
+O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2,
+BM, O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O1, QD,
+O1, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4,
+QD, O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF,
+O1, QD, O1, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3,
+BM, O4, QD, O2, BM, O3, BM, O4, QF, O2, BM, O3, BM, O4, QD, O2, BM, O3, BM,
+O4);
+
+beam, MASS=1.862988122,CHARGE=1, ENERGY=9.862988122,
+      EX=2e-05, EY=2e-05, SIGE=0.001;
+
+use,period=machine;
+
+twiss energy=9.862988122, betx=12.3799, alfx=1237.62,
+     bety=2.89167, alfy=289.072,
+     dx=-0.0211469, dpx=395.169,
+     dy=0.00572777, dpy=0;
+
+survey,;
+
+stop;
